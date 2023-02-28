@@ -1,0 +1,53 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-gap: 7px;
+}
+
+.item {
+    background-color: red;
+    width: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+@media screen and (max-width:900px) {
+    .container {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+    }
+}
+
+@media screen and (max-width:700px) {
+    .container {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+    }
+
+    .item {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .container {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+    }
+
+    .item {
+        width: 300px;
+    }
+
+}
+
+.noProduct {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    justify-content: center;
+    grid-column: 1/-1;
+
+}

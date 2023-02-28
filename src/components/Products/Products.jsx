@@ -1,16 +1,27 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
+import style from './Products.module.scss'
+
 import useSwr from 'swr';
 import {
     getProducts,
     productsEndpoint as cacheKey
 } from "../../api/ProductsApi";
+import ProductItem from "./ProductItem";
+import ProductsList from "./ProductsList";
 
 function Products() {
     const { page } = useParams();
     const [searchParams] = useSearchParams();
-    console.log(searchParams.toString())
+
+    const rating = searchParams.get('rating') ?? '';
+    const alphabeticalOrder = searchParams.get('AZ') ?? '';
+    const brand = searchParams.get('brand') ?? '';
+    const gender = searchParams.get('gender') ?? '';
+
+    console.log('page', page);
+
     const navigate = useNavigate();
     useEffect(() => {
         if (!page) {
@@ -19,32 +30,7 @@ function Products() {
         return () => {
         };
     }, []);
-
-
-    //? SWR
-    const {
-        isLoading,
-        error,
-        data: products,
-        mutate
-    } = useSwr(
-        cacheKey, getProducts, { onSuccess: data => data.sort((a, b) => a.productIndex - b.productIndex) }
-    )
-    let content = 'loading...';
-
-    if (isLoading) {
-        content = <p>{content}</p>
-    } else if (error) {
-        content = <p>{error}</p>
-    }
-    else {
-        console.log('here', products)
-        content = products.map(prod => <p key={prod.productId}>{prod.productId}</p>);
-    }
-    return <div>Products {page} {content} </div>;
-
-
-
+    return (<ProductsList page={page} />);
 }
 
 export default Products;
