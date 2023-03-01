@@ -14,6 +14,7 @@ function ProductItem({ product }) {
                 <FontAwesomeIcon icon={faHeart} />
             </div>
             <p>{product.productName}</p>
+            <p>{product.productPrice}</p>
         </article>
     </>
 }

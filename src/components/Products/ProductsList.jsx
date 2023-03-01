@@ -7,25 +7,15 @@ import useSwr from 'swr';
 import {
     getProducts,
     paginate,
+    applyFilter,
     productsEndpoint as cacheKey
 } from "../../api/ProductsApi";
 import ProductItem from "./ProductItem";
-import { sortByName } from "../../utils/SortHelper";
+// import { applyFilter, sortByName } from "../../utils/SortHelper";
 
 function ProductsList({ page, filter }) {
 
 
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (!page) {
-            navigate('/products/1')
-        }
-        return () => {
-        };
-    }, []);
-
-    const end = page * 16;
-    const start = end - 16;
     //? SWR
     const {
         isLoading,
@@ -33,8 +23,9 @@ function ProductsList({ page, filter }) {
         data: products,
         mutate
     } = useSwr(
-        // cacheKey, getProducts, { onSuccess: data => data.sort((a, b) => { return a.productIndex - b.productIndex }) }
-        cacheKey, getProducts, paginate(start, end), { onSuccess: data => data.sort((a, b) => sortByName(a.productName, b.productName)) }
+        cacheKey, getProducts, applyFilter(cacheKey, `?${filter}`), {
+        onSuccess: data => data
+    }
     )
 
 

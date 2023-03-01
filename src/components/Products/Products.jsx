@@ -12,25 +12,46 @@ import ProductItem from "./ProductItem";
 import ProductsList from "./ProductsList";
 
 function Products() {
-    const { page } = useParams();
+    const navigate = useNavigate();
+    let { page } = useParams();
     const [searchParams] = useSearchParams();
 
-    const rating = searchParams.get('rating') ?? '';
-    const alphabeticalOrder = searchParams.get('AZ') ?? '';
-    const brand = searchParams.get('brand') ?? '';
-    const gender = searchParams.get('gender') ?? '';
+    let filter = searchParams.toString();
 
-    console.log('page', page);
+    const itemPerPage = searchParams.get('_limit') ?? 16;
+    page = isNaN(page) ? 1 : page;
+    const start = searchParams.get('_start') ?? (page - 1) * itemPerPage;
 
-    const navigate = useNavigate();
+    console.log('start', start);
+
     useEffect(() => {
-        if (!page) {
-            navigate('/products/1')
+        if (!filter) {
+            navigate(`/products/${page}?_start=${start}&_limit=${itemPerPage}`, { replace: true })
+        } else {
+            // console.log('slice', filter.toLowerCase().slice(filter.indexOf('_start')))
+            filter = filter.toLowerCase().slice(0, filter.indexOf('_start'));
+            navigate(`/products/${page}?${filter}_start=${start}&_limit=${itemPerPage}`, { replace: true })
         }
+        // }
         return () => {
         };
-    }, []);
-    return (<ProductsList page={page} />);
+    }, [
+    ]);
+
+
+
+    // console.log('page', page);
+
+    // const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     if (!page) {
+    //         navigate('/products/1')
+    //     }
+    //     return () => {
+    //     };
+    // }, []);
+    return (<ProductsList page={page} filter={filter} />);
 }
 
 export default Products;
