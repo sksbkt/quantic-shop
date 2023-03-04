@@ -16,27 +16,35 @@ function Products() {
     let { page } = useParams();
     const [searchParams] = useSearchParams();
 
-    let filter = searchParams.toString();
+    function pageFilter() {
+        let itemPerPage = searchParams.get('_limit') ?? 16;
+        let start = searchParams.get('_start') ?? 0;
+        let url;
 
-    const itemPerPage = searchParams.get('_limit') ?? 16;
-    page = isNaN(page) ? 1 : page;
-    const start = searchParams.get('_start') ?? (page - 1) * itemPerPage;
+        if (itemPerPage <= 0 || isNaN(itemPerPage) || itemPerPage == undefined) {
+            itemPerPage = 16;
+        }
+        if (page <= 0 || isNaN(page) || page == undefined) {
+            page = 1;
+        }
+        start = (page - 1) * itemPerPage;
 
-    console.log('start', start);
+        url = `/products/${page}?_start=${start}&_limit=${itemPerPage}`;
+        return url;
+    }
 
     useEffect(() => {
-        if (!filter) {
-            navigate(`/products/${page}?_start=${start}&_limit=${itemPerPage}`, { replace: true })
-        } else {
-            // console.log('slice', filter.toLowerCase().slice(filter.indexOf('_start')))
-            filter = filter.toLowerCase().slice(0, filter.indexOf('_start'));
-            navigate(`/products/${page}?${filter}_start=${start}&_limit=${itemPerPage}`, { replace: true })
-        }
+        navigate(pageFilter())
+        // if (!filter || filter == '') {
+        // } else {
+        //     // console.log('slice', filter.toLowerCase().slice(filter.indexOf('_start')))
+        //     filter = filter.toLowerCase().slice(0, filter.indexOf('_start'));
+        //     navigate(`/products/${page}?${filter}_start=${start}&_limit=${itemPerPage}`, { replace: true })
+        // }
         // }
         return () => {
         };
-    }, [
-    ]);
+    }, []);
 
 
 
@@ -51,7 +59,7 @@ function Products() {
     //     return () => {
     //     };
     // }, []);
-    return (<ProductsList page={page} filter={filter} />);
+    return (<ProductsList />);
 }
 
 export default Products;

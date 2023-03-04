@@ -9,15 +9,12 @@ async function delay() {
     return new Promise(res => setTimeout(() => res(), 800));
 }
 
-export function paginate(start, end) {
-    productsEndpoint = '/products' + `?_start=${start}&_end=${end}`;
-}
 
-export function applyFilter(endpoint, filter) {
-    productsEndpoint = '/products' + `${filter}`;
-}
-export async function getProducts() {
+export async function getProducts(filter) {
     await delay();
-    const response = await productsApi.get(productsEndpoint);
+    console.log(filter);
+    const response = await productsApi.get(productsEndpoint + `?${filter[1]}`,
+        // { signal: fetchController.signal }
+    );
     return response.data;
 }
