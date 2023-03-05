@@ -3,13 +3,8 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 import style from './Products.module.scss'
 
-import useSwr from 'swr';
-import {
-    getProducts,
-    productsEndpoint as cacheKey
-} from "../../api/ProductsApi";
-import ProductItem from "./ProductItem";
 import ProductsList from "./ProductsList";
+import Filter from "./Filter";
 
 function Products() {
     const navigate = useNavigate();
@@ -35,31 +30,15 @@ function Products() {
 
     useEffect(() => {
         navigate(pageFilter())
-        // if (!filter || filter == '') {
-        // } else {
-        //     // console.log('slice', filter.toLowerCase().slice(filter.indexOf('_start')))
-        //     filter = filter.toLowerCase().slice(0, filter.indexOf('_start'));
-        //     navigate(`/products/${page}?${filter}_start=${start}&_limit=${itemPerPage}`, { replace: true })
-        // }
-        // }
         return () => {
         };
     }, []);
-
-
-
-    // console.log('page', page);
-
-    // const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (!page) {
-    //         navigate('/products/1')
-    //     }
-    //     return () => {
-    //     };
-    // }, []);
-    return (<ProductsList />);
+    return (
+        <>
+            <Filter />
+            <ProductsList />
+        </>
+    );
 }
 
 export default Products;
