@@ -12,9 +12,7 @@ async function delay() {
 
 export async function getProducts(filter) {
     await delay();
-    console.log(filter);
-    const response = await productsApi.get(productsEndpoint + `?${filter[1]}`,
-        // { signal: fetchController.signal }
+    const response = await productsApi.get(productsEndpoint + `?${filter[1]}`
     );
     return response.data;
 }

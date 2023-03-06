@@ -13,10 +13,10 @@ import {
 import ProductItem from "./ProductItem";
 // import { applyFilter, sortByName } from "../../utils/SortHelper";
 
-function ProductsList() {
+function ProductsList({ abortController }) {
     const [searchParams] = useSearchParams();
     const filter = searchParams.toString();
-    console.log(filter);
+
     //? SWR
     const {
         isLoading,
@@ -24,35 +24,20 @@ function ProductsList() {
         data: products,
         mutate
     } = useSwr(
-        [cacheKey, filter],
+        [
+            cacheKey,
+            filter,
+            // abortController
+        ],
         getProducts,
-        //   applyFilter(cacheKey, `?${filter}`),
 
         {
             onSuccess: data => {
                 return data
-            }
+            }, revalidateOnFocus: false,
+            dedupingInterval: 2000
         }
     )
-
-    // const [isLoading, setIsLoading] = useState(true);
-    // const fetchController = useRef(null);
-
-    // const [products, setProducts] = useState([]);
-
-
-    // useEffect(() => {
-    //     async function fetchProducts() {
-    //         setIsLoading(true);
-    //         if (!fetchController.current) fetchController.current = new AbortController();
-    //         setProducts(await getProducts(filter, fetchController));
-    //         setIsLoading(false);
-    //     }
-    //     return () => {
-    //         fetchController.current?.abort();
-    //     };
-    // }, []);
-
 
     let content = 'loading...';
 

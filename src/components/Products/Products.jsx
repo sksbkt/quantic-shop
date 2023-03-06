@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-
-import style from './Products.module.scss'
+import { searchParams as params } from '../../Helper/SearchParamsParser'
 
 import ProductsList from "./ProductsList";
 import Filter from "./Filter";
@@ -9,7 +8,11 @@ import Filter from "./Filter";
 function Products() {
     const navigate = useNavigate();
     let { page } = useParams();
+    const [filter, setFilter] = useState('');
+
     const [searchParams] = useSearchParams();
+
+    // const abort = new AbortController();
 
     function pageFilter() {
         let itemPerPage = searchParams.get('_limit') ?? 16;
@@ -23,20 +26,33 @@ function Products() {
             page = 1;
         }
         start = (page - 1) * itemPerPage;
+        // if (searchParams.toString() = '')
+        if (searchParams.toString() == '' || filter != '')
+            url = `/products/${page}?${filter}&_start=${start}&_limit=${itemPerPage}`;
+        else {
+            console.log(searchParams.toString());
+            searchParams.set('_start', start)
+            searchParams.set('_limit', itemPerPage)
+            url = `/products/${page}?&${searchParams.toString()}`;
+        }
 
-        url = `/products/${page}?_start=${start}&_limit=${itemPerPage}`;
         return url;
     }
+
 
     useEffect(() => {
         navigate(pageFilter())
         return () => {
         };
-    }, []);
+    }, [filter]);
     return (
         <>
-            <Filter />
-            <ProductsList />
+            <Filter click={(filterOut) => {
+                setFilter(filterOut)
+            }} />
+            <ProductsList
+            // abortController={abort}
+            />
         </>
     );
 }
