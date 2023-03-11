@@ -1,0 +1,1 @@
+export const TEXT_STRINGS_EN = { filter: 'Filter' };
