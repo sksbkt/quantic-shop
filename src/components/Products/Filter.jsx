@@ -9,6 +9,7 @@ import { ReactComponent as ArrowDownIcon } from '../../../public/arrow-down-long
 
 
 import style from "./Products.module.scss"
+//! weird bug with react extension in vscode correct path but error happened
 import FilterList from './productsComponents/FilterList'
 
 function Filter({ click }) {

@@ -59,9 +59,11 @@
     color: #383838;
     display: flex;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 3px;
+
     cursor: pointer;
     transition: .2s all;
+    min-height: 40px;
 
     p {
         color: #383838;
@@ -112,7 +114,12 @@
 }
 
 .btnMd {
-    padding: 10px 5px;
+    min-height: 40px;
+    min-width: 100px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .row {
@@ -131,5 +138,34 @@
         color: #383838;
         font-size: 8pt;
         line-height: 10px;
+    }
+}
+
+.listHeader {
+    height: 40px;
+    min-width: 150px;
+    position: relative;
+}
+
+.filterList {
+    position: relative;
+    width: 100px;
+
+    ul {
+        position: absolute;
+        top: 20px;
+        background: #eee;
+        max-width: 300px;
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid black;
+        margin: 0 auto;
+        left: -300px;
+        right: -300px;
+        width: max-content;
+
+        li {
+            color: #383838;
+        }
     }
 }
