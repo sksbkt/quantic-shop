@@ -126,7 +126,7 @@
     display: flex;
     gap: 7px;
     flex-direction: row;
-    align-items: center;
+    // align-items: center;
 }
 
 .az {
@@ -149,11 +149,12 @@
 
 .filterList {
     position: relative;
-    width: 100px;
+    width: 150px;
 
     ul {
         position: absolute;
-        top: 20px;
+        top: 0;
+        left: 0;
         background: #eee;
         max-width: 300px;
         padding: 10px;
@@ -162,10 +163,13 @@
         margin: 0 auto;
         left: -300px;
         right: -300px;
-        width: max-content;
+        min-width: max-content;
+        width: 150px;
 
         li {
             color: #383838;
+            display: flex;
+            justify-content: space-between;
         }
     }
 }
