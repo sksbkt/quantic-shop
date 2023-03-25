@@ -1,3 +1,7 @@
+a {
+    cursor: pointer;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
@@ -171,5 +175,20 @@
             display: flex;
             justify-content: space-between;
         }
+    }
+}
+
+.pagesList {
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .selectPageTab {
+        color: white;
+    }
+
+    .pageTab {
+        color: #acacac;
     }
 }

@@ -6,23 +6,22 @@ import style from './Products.module.scss'
 import useSwr from 'swr';
 import {
     getProducts,
-    // paginate,
-    // applyFilter,
     productsEndpoint as cacheKey
 } from "../../api/ProductsApi";
 import ProductItem from "./ProductItem";
-// import { applyFilter, sortByName } from "../../utils/SortHelper";
 
-function ProductsList({ abortController }) {
+function ProductsList({ ProductsListNumberOfItems }) {
     const [searchParams] = useSearchParams();
     const filter = searchParams.toString();
+
+
 
     //? SWR
     const {
         isLoading,
         error,
         data: products,
-        mutate
+        // mutate
     } = useSwr(
         [
             cacheKey,
@@ -32,8 +31,9 @@ function ProductsList({ abortController }) {
         getProducts,
 
         {
-            onSuccess: data => {
-                return data
+            onSuccess: res => {
+                ProductsListNumberOfItems(res.headers["x-total-count"])
+                return res.data
             }, revalidateOnFocus: false,
             dedupingInterval: 2000
         }
@@ -47,9 +47,13 @@ function ProductsList({ abortController }) {
         content = <p>{error}</p>
     }
     else {
-        content = (<div className={style.container}>
-            {products.length > 0 ? products.map(prod => <ProductItem key={prod.productIndex} product={prod} />) : <p className={style.noProduct}>No products in this page</p>}
-        </div>);
+        content = (
+            <>
+                <div className={style.container}>
+                    {products.data.length > 0 ? products.data.map(prod => <ProductItem key={prod.productIndex} product={prod} />) : <p className={style.noProduct}>No products in this page</p>}
+                </div>
+            </>
+        );
     }
     return content;
 }

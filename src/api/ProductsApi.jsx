@@ -14,5 +14,5 @@ export async function getProducts(filter) {
     await delay();
     const response = await productsApi.get(productsEndpoint + `?${filter[1]}`
     );
-    return response.data;
+    return response;
 }

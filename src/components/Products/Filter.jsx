@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import OutsideAlerter from "../../hooks/useOutSideAlerter";
 import { ReactComponent as ArrowUpIcon } from '../../../public/arrow-up-long-solid.svg'
@@ -12,13 +12,17 @@ import style from "./Products.module.scss"
 
 
 function Filter({ click }) {
-    const [ascending, setAscending] = useState(true);
+    const [ascending, setAscending] = useState(false);
     const [listOpen, setListOpen] = useState(false);
-    const [name, setName] = useState(false);
-    const [price, setPrice] = useState(false);
+    const [sortBy, setSortBy] = useState(0);
     const [availability, setAvailability] = useState(false);
-    const [rating, setRating] = useState(false);
 
+    useEffect(() => {
+        let link = `_sort=${sortBy}&_order=${ascending ? 'asc' : 'desc'}${availability ? `${'&productIsAvailable=true'}` : ''}`;
+        click(link)
+        return () => {
+        };
+    }, [sortBy, ascending, availability]);
 
     return <>
         <div className={style.row}>
@@ -45,20 +49,19 @@ function Filter({ click }) {
                                         <div >
                                             <ul>
                                                 <li>
-                                                    <label htmlFor="nameCb">Name:</label>
-                                                    <input id="nameCb" type="checkbox" checked={name} onChange={(e) => setName(!name)} />
-                                                </li>
-                                                <li>
-                                                    <label htmlFor="priceCb">Price:</label>
-                                                    <input id="priceCb" type="checkbox" checked={price} onChange={(e) => setPrice(!price)} />
+                                                    <label htmlFor="SortSe">Sort by:</label>
+                                                    <select id="SortSe" value={sortBy} onChange={(e) => {
+                                                        setSortBy(e.currentTarget.value)
+                                                    }}>
+                                                        <option value={0}>Select one</option>
+                                                        <option value={'productName'}>Name</option>
+                                                        <option value={'productPrice'}>Price</option>
+                                                        <option value={'productRating'}>Rating</option>
+                                                    </select>
                                                 </li>
                                                 <li>
                                                     <label htmlFor="availabilityCb">Availability:</label>
                                                     <input id="availabilityCb" type="checkbox" checked={availability} onChange={(e) => setAvailability(!availability)} />
-                                                </li>
-                                                <li>
-                                                    <label htmlFor="RatingCb">Rating:</label>
-                                                    <input id="RatingCb" type="checkbox" checked={rating} onChange={(e) => setRating(!rating)} />
                                                 </li>
                                             </ul>
                                         </div>
@@ -70,17 +73,17 @@ function Filter({ click }) {
             <a className={`${style.btnSm} ${style.btn}`} role="button"
                 onClick={() => {
                     setAscending(!ascending)
-                    click(`_sort=productName&_order=${ascending ? 'asc' : 'desc'}`)
-                    // click(ascending ? 'asc' : 'desc')
                 }
                 } >
-                <div className={style.az}>
+                {/* <div className={style.az}>
                     <p>A</p>
                     <p>Z</p>
-                </div>
-                {ascending ?
-                    (<ArrowUpIcon className={style.icon} />) :
-                    (<ArrowDownIcon className={style.icon} />)}
+                </div> */}
+                {
+                    ascending ?
+                        (<ArrowUpIcon className={style.icon} />) :
+                        (<ArrowDownIcon className={style.icon} />)
+                }
                 {/* <FontAwesomeIcon icon={ascending ? faArrowUp : faArrowDown} className={style.icon} /> */}
             </a>
         </div>
