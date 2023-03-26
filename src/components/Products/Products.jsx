@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 function Products() {
     const navigate = useNavigate();
     let { page } = useParams();
-    const [paginationPage, setPaginationPage] = useState(1);
+    const [paginationPage, setPaginationPage] = useState();
 
     const [filter, setFilter] = useState('');
     const [numberOfItems, setNumberOfItems] = useState(0);
@@ -16,7 +16,6 @@ function Products() {
     const [searchParams] = useSearchParams();
 
     // const abort = new AbortController();
-
     let itemPerPage = searchParams.get('_limit') ?? 16;
     let start = searchParams.get('_start') ?? 0;
     function pageFilter() {
@@ -25,11 +24,15 @@ function Products() {
         if (itemPerPage <= 0 || isNaN(itemPerPage) || itemPerPage == undefined) {
             itemPerPage = 16;
         }
-        if (page <= 0 || isNaN(page) || page == undefined) {
+
+        // console.log({ 'Page': page <= 0, 'NaN': isNaN(page), 'pageNo:': page <= 0 });
+        if (page == undefined || isNaN(page) || page <= 0) {
             page = 1;
-        } else {
+        }
+        else if (!isNaN(paginationPage)) {
             page = paginationPage
         }
+
         start = (page - 1) * itemPerPage;
         // if (searchParams.toString() = '')
         if (searchParams.toString() == '' || filter != '')
@@ -64,6 +67,7 @@ function Products() {
                 paginationPage={(pageNumber) => setPaginationPage(pageNumber)}
                 paginationPageLimit={itemPerPage}
                 paginationNumberOfItems={numberOfItems}
+                paginationCurrentPage={page ?? 1}
             />
         </>
     );
