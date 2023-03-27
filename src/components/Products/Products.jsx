@@ -36,7 +36,7 @@ function Products() {
         start = (page - 1) * itemPerPage;
         // if (searchParams.toString() = '')
         if (searchParams.toString() == '' || filter != '')
-            url = `/products/${page}?${filter}&_start=${start}&_limit=${itemPerPage}`;
+            url = `/products/${page}?${filter.length > 0 ? filter + '&' : ''}_start=${start}&_limit=${itemPerPage}`;
         else {
             searchParams.set('_start', start)
             searchParams.set('_limit', itemPerPage)
@@ -67,7 +67,7 @@ function Products() {
                 paginationPage={(pageNumber) => setPaginationPage(pageNumber)}
                 paginationPageLimit={itemPerPage}
                 paginationNumberOfItems={numberOfItems}
-                paginationCurrentPage={page ?? 1}
+                paginationSelectedPage={page ?? 1}
             />
         </>
     );

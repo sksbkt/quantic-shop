@@ -8,17 +8,19 @@ import { ReactComponent as FilterIcon } from '../../../public/filter-solid.svg'
 // import { TEXT_STRINGS_EN } from '../../Localization/Language'
 
 import style from "./Products.module.scss"
+import { useSearchParams } from "react-router-dom";
 
 
 
 function Filter({ click }) {
+    const [searchParams] = useSearchParams();
     const [ascending, setAscending] = useState(false);
     const [listOpen, setListOpen] = useState(false);
-    const [sortBy, setSortBy] = useState(0);
-    const [availability, setAvailability] = useState(false);
+    const [sortBy, setSortBy] = useState(searchParams.get('_sort') ?? '');
+    const [availability, setAvailability] = useState(searchParams.get('productIsAvailable') == 'true' ? true : false);
 
     useEffect(() => {
-        let link = `_sort=${sortBy}&_order=${ascending ? 'asc' : 'desc'}${availability ? `${'&productIsAvailable=true'}` : ''}`;
+        let link = `${sortBy.length > 0 ? `_sort=${sortBy}&_order=${ascending ? 'asc' : 'desc'}` : ''}${availability ? `${'&productIsAvailable=true'}` : ''}`;
         click(link)
         return () => {
         };
