@@ -9,10 +9,20 @@ import { ReactComponent as FilterIcon } from '../../../public/filter-solid.svg'
 
 import style from "./Products.module.scss"
 import { useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter } from "../../redux/Slices/filterSlice";
 
 
 
-function Filter({ click }) {
+function Filter(
+    // { click }
+) {
+    //? redux tool kit
+    //? getting filter from store
+    const filter = useSelector((state) => state.productFilter.filter);
+    //? we use dispatch for setting filter to store
+    const dispatch = useDispatch();
+
     const [searchParams] = useSearchParams();
     const [ascending, setAscending] = useState(false);
     const [listOpen, setListOpen] = useState(false);
@@ -21,7 +31,9 @@ function Filter({ click }) {
 
     useEffect(() => {
         let link = `${sortBy.length > 0 ? `_sort=${sortBy}&_order=${ascending ? 'asc' : 'desc'}` : ''}${availability ? `${'&productIsAvailable=true'}` : ''}`;
-        click(link)
+        // click(link)
+        //? setting filter to store while using dispatch and use setFilter action
+        dispatch(setFilter(link));
         return () => {
         };
     }, [sortBy, ascending, availability]);

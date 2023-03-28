@@ -20,6 +20,7 @@ const NotFound = lazy(() => import('./components/NotFound'))
 
 function App() {
   return (
+
     <Routes>
       <Route path='/' element={<Layout />}>
         {/* Public Routes */}
@@ -55,6 +56,7 @@ function App() {
         } />
       </Route>
     </Routes>
+
   )
 
 }

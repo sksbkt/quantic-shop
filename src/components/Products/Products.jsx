@@ -4,13 +4,18 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import ProductsList from "./ProductsList";
 import Filter from "./Filter";
 import Pagination from "./Pagination";
+import { useSelector } from "react-redux";
 
 function Products() {
     const navigate = useNavigate();
     let { page } = useParams();
     const [paginationPage, setPaginationPage] = useState();
 
-    const [filter, setFilter] = useState('');
+    //? REPLACED: with redux store
+    // const [filter, setFilter] = useState('');
+    const filter = useSelector((state) => state.productFilter.filter);
+
+
     const [numberOfItems, setNumberOfItems] = useState(0);
 
     const [searchParams] = useSearchParams();
@@ -54,9 +59,9 @@ function Products() {
     }, [filter, paginationPage]);
     return (
         <>
-            <Filter click={(filterOut) => {
-                setFilter(filterOut)
-            }} />
+            <Filter
+            // click={(filterOut) => { setFilter(filterOut) }}
+            />
             <ProductsList
                 ProductsListNumberOfItems={(itemsNo) => {
                     setNumberOfItems(itemsNo)
