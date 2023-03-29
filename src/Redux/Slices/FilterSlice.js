@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    filter: ''
+    filter: '',
+    ascending: false,
 };
 export const filterSlice = createSlice({
     name: 'ProductFilter',
     initialState,
     reducers: {
         setFilter: (state, action) => {
-            state.filter = action.payload
+            state.filter = action.payload;
         },
-        clearFilter: (state) => {
-            state.filter = ''
+        setAscending: (state, action) => {
+            state.ascending = action.payload;
         }
     }
 });
-export const { setFilter, clearFilter } = filterSlice.actions;
-export default filterSlice.reducer
+export const { setFilter, setAscending } = filterSlice.actions;
+export default filterSlice.reducer;

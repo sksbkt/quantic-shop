@@ -1,9 +1,11 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./../Header";
+import Footer from "./../Footer";
 import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
-import ErrorFallback from "./ErrorFallBack";
+import ErrorFallback from "./../ErrorFallBack";
+
+import Style from './Layout.module.scss'
 
 function Layout() {
     const navigate = useNavigate();
@@ -11,9 +13,12 @@ function Layout() {
         <>
             <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => navigate("/", { replace: true })}>
                 <Suspense>
-                    <Header />
-                    <Outlet />
-                    <Footer />
+                    <div className={Style.layOut}>
+                        <Header />
+                        <Outlet className={Style.outlet} />
+                        <Footer />
+                        <div className={Style.background}></div>
+                    </div>
                 </Suspense>
             </ErrorBoundary>
         </>

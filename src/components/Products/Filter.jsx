@@ -10,7 +10,7 @@ import { ReactComponent as FilterIcon } from '../../../public/filter-solid.svg'
 import style from "./Products.module.scss"
 import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "../../redux/Slices/filterSlice";
+import { setFilter, setAscending } from "../../redux/Slices/filterSlice";
 
 
 
@@ -20,11 +20,12 @@ function Filter(
     //? redux tool kit
     //? getting filter from store
     const filter = useSelector((state) => state.productFilter.filter);
+    //? getting ascending from store
+    const ascending = useSelector((state) => state.productFilter.ascending);
     //? we use dispatch for setting filter to store
     const dispatch = useDispatch();
 
     const [searchParams] = useSearchParams();
-    const [ascending, setAscending] = useState(false);
     const [listOpen, setListOpen] = useState(false);
     const [sortBy, setSortBy] = useState(searchParams.get('_sort') ?? '');
     const [availability, setAvailability] = useState(searchParams.get('productIsAvailable') == 'true' ? true : false);
@@ -86,7 +87,8 @@ function Filter(
             </OutsideAlerter>
             <a className={`${style.btnSm} ${style.btn}`} role="button"
                 onClick={() => {
-                    setAscending(!ascending)
+                    // setAscending(!ascending)
+                    dispatch(setAscending(!ascending))
                 }
                 } >
                 {/* <div className={style.az}>
