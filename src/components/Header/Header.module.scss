@@ -1,3 +1,5 @@
+@import '../Styles/Global.module.scss';
+
 .container {
     display: flex;
     width: 1000px;
@@ -12,8 +14,17 @@
     .container {
         width: 100vw;
     }
+
+    .navigation {
+        gap: 40px;
+    }
 }
 
+@media screen and (min-width:1000px) {
+    .navigation {
+        gap: 50px;
+    }
+}
 
 
 .svgBackground {
@@ -45,13 +56,25 @@
     width: 100%;
 
     .headerText {
+        position: absolute;
         display: flex;
         align-items: center;
         flex-direction: row;
-        justify-content: center;
-
-
+        justify-content: space-evenly;
+        width: 100%;
     }
 
-    .navigation {}
+}
+
+.navigation {
+    display: flex;
+}
+
+.navIcon {}
+
+.navigationElement {
+    display: flex;
+    /* align-content: center; */
+    align-items: center;
+    gap: 5px;
 }

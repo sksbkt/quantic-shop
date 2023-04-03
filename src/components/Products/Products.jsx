@@ -5,6 +5,8 @@ import ProductsList from "./ProductsList";
 import Filter from "./Filter";
 import Pagination from "./Pagination";
 import { useSelector } from "react-redux";
+import BreadCrumbs from "../components/BreadCrumbs";
+import Style from './Products.module.scss'
 
 function Products() {
     const navigate = useNavigate();
@@ -58,23 +60,28 @@ function Products() {
         };
     }, [filter, paginationPage]);
     return (
-        <>
-            <Filter
-            // click={(filterOut) => { setFilter(filterOut) }}
-            />
+        <section className={Style.mainSection}>
+            <BreadCrumbs />
+            <div className={Style.rowStart}>
+                <Filter
+                // click={(filterOut) => { setFilter(filterOut) }}
+                />
+            </div>
             <ProductsList
                 ProductsListNumberOfItems={(itemsNo) => {
                     setNumberOfItems(itemsNo)
                 }}
             // abortController={abort}
             />
-            <Pagination
-                paginationPage={(pageNumber) => setPaginationPage(pageNumber)}
-                paginationPageLimit={itemPerPage}
-                paginationNumberOfItems={numberOfItems}
-                paginationSelectedPage={page ?? 1}
-            />
-        </>
+            <div className={Style.row}>
+                <Pagination
+                    paginationPage={(pageNumber) => setPaginationPage(pageNumber)}
+                    paginationPageLimit={itemPerPage}
+                    paginationNumberOfItems={numberOfItems}
+                    paginationSelectedPage={page ?? 1}
+                />
+            </div>
+        </section>
     );
 }
 

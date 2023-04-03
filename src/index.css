@@ -17,6 +17,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
 }
 
 /* a {
@@ -89,4 +90,5 @@ button:focus-visible {
   margin: 0 auto;
   padding: 0;
   text-align: center;
+  overflow:hidden;
 }
