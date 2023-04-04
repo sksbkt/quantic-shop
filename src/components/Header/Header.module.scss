@@ -70,6 +70,57 @@
     display: flex;
 }
 
+.hamburgerIcon {
+    height: 30px;
+    width: 30px;
+    visibility: hidden;
+}
+
+.hamburgerMenu {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+@media screen and (max-width:700px) {
+    .navigation {
+        flex-direction: column;
+        position: absolute;
+        background-color: white;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+    }
+
+    .navigationVisible {
+        visibility: visible;
+    }
+
+    .hamburgerIcon {
+        visibility: visible;
+    }
+
+    // .rowResponsive {
+    //     flex-direction: column;
+    // }
+
+    .headerText {
+        justify-content: space-around !important;
+    }
+
+    .navigationElement {
+        .navIcon {
+            width: 10px;
+        }
+
+        p {
+            font-size: 12pt;
+        }
+    }
+}
+
 .navIcon {}
 
 .navigationElement {

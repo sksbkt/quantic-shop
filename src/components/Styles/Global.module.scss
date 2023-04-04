@@ -143,6 +143,7 @@ a {
     min-height: 40px;
     min-width: 100px;
     gap: 10px;
+    font-weight: 700;
 }
 
 .iconBtn {
@@ -154,7 +155,7 @@ a {
     cursor: pointer;
 
     * {
-        width: 100%;
+        width: 15px;
         display: flex;
         align-content: center;
         justify-content: center;
@@ -166,16 +167,18 @@ a {
 //?---------------------------------------------------------
 
 .row,
+.rowResponsive,
 .rowStart,
 .rowEnd {
     display: flex;
-    gap: 7px;
+    gap: 10px;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
+    align-items: center;
 }
 
-.row {
+.row,
+.rowResponsive {
     justify-content: center;
 }
 
