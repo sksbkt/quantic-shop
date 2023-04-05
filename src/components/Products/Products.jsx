@@ -67,12 +67,14 @@ function Products() {
                 // click={(filterOut) => { setFilter(filterOut) }}
                 />
             </div>
+            <div className={Style.gap}></div>
             <ProductsList
                 ProductsListNumberOfItems={(itemsNo) => {
                     setNumberOfItems(itemsNo)
                 }}
             // abortController={abort}
             />
+            <div className={Style.gap} />
             <div className={Style.row}>
                 <Pagination
                     paginationPage={(pageNumber) => setPaginationPage(pageNumber)}

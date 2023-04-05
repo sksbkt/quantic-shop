@@ -77,14 +77,12 @@
 }
 
 .hamburgerMenu {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+    visibility: hidden;
 }
 
 
 @media screen and (max-width:700px) {
+
     .navigation {
         flex-direction: column;
         position: absolute;
@@ -96,6 +94,10 @@
 
     .navigationVisible {
         visibility: visible;
+    }
+
+    .navigationInvisible {
+        visibility: hidden;
     }
 
     .hamburgerIcon {
@@ -119,6 +121,56 @@
             font-size: 12pt;
         }
     }
+
+    //?---------------------------------------------------------
+    // ? Hamburger menu
+    //?---------------------------------------------------------
+    .hamburgerMenu {
+        background: whitesmoke;
+        border-right: 1px solid #d5d5d5;
+        position: fixed;
+        display: flex;
+        left: 0px;
+        top: 0;
+        flex-direction: column;
+        // gap: 20px;
+        bottom: 0;
+        /* padding: 20px 40px 0 20px; */
+        min-width: 200px;
+        z-index: 99;
+        align-items: flex-start;
+        visibility: visible;
+        transition: ease-out 0.2s;
+
+        a {
+            display: flex;
+            justify-content: start;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #d5d5d5;
+            color: #444444;
+            transition: ease-out 0.2s;
+            border-bottom: 1px solid #8f8f8f;
+        }
+
+        a:hover {
+            background-color: #414141;
+            color: #d5d5d5;
+            font-size: 20px;
+            font-weight: 900;
+        }
+    }
+
+    .hamburgerMenuVisible {
+        visibility: visible;
+        transform: translate(0, 0);
+    }
+
+    .hamburgerMenuInvisible {
+        visibility: hidden;
+        transform: translate(-200px, 0);
+    }
+
 }
 
 .navIcon {}
