@@ -61,7 +61,6 @@ function Products() {
     }, [filter, paginationPage]);
     return (
         <section className={Style.mainSection}>
-            <BreadCrumbs />
             <div className={Style.rowStart}>
                 <Filter
                 // click={(filterOut) => { setFilter(filterOut) }}

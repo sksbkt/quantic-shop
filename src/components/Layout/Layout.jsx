@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import ErrorFallback from "./../ErrorFallBack";
 
 import Style from './Layout.module.scss'
+import BreadCrumbs from "../components/BreadCrumbs";
 
 function Layout() {
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ function Layout() {
                 <Suspense>
                     <div className={Style.layOut}>
                         <Header />
+                        <BreadCrumbs />
                         <Outlet className={Style.outlet} />
                         <Footer />
                         <div className={Style.background}></div>
