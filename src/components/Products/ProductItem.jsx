@@ -1,17 +1,23 @@
 import React from "react";
-import style from './Products.module.scss'
+import Style from './Products.module.scss'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 // import useSwr from 'swr';
-function ProductItem({ product }) {
+function ProductItem({ product = {
+    productPicture: "",
+    productName: "sss",
+    productPrice: "999"
+}, skeletonLoad }) {
     return <>
-        <article className={style.item}>
+        <article className={`${Style.item} + ${skeletonLoad ? Style.skeletonItem : ''}`}>
             <img src={product.productPicture} />
             <div >
-                <FontAwesomeIcon icon={faBasketShopping} />
-                <FontAwesomeIcon icon={faHeart} />
+                {!skeletonLoad ? <>
+                    <FontAwesomeIcon icon={faBasketShopping} />
+                    <FontAwesomeIcon icon={faHeart} />
+                </> : <></>}
             </div>
             <p>{product.productName}</p>
             <p>{product.productPrice}</p>

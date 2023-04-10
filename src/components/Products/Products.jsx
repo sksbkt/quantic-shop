@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 import ProductsList from "./ProductsList";
@@ -7,6 +7,7 @@ import Pagination from "./Pagination";
 import { useSelector } from "react-redux";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Style from './Products.module.scss'
+import SkeletonProducts from "./skeleton/SkeletonProducts";
 
 function Products() {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ function Products() {
     const filter = useSelector((state) => state.productFilter.filter);
 
 
-    const [numberOfItems, setNumberOfItems] = useState(0);
+    const [numberOfItems, setNumberOfItems] = useState(16);
 
     const [searchParams] = useSearchParams();
 
@@ -67,12 +68,14 @@ function Products() {
                 />
             </div>
             <div className={Style.gap}></div>
-            <ProductsList
-                ProductsListNumberOfItems={(itemsNo) => {
-                    setNumberOfItems(itemsNo)
-                }}
-            // abortController={abort}
-            />
+            <Suspense fallback={<SkeletonProducts numberOfItems={numberOfItems} />}>
+                <ProductsList
+                    ProductsListNumberOfItems={(itemsNo) => {
+                        setNumberOfItems(itemsNo)
+                    }}
+                // abortController={abort}
+                />
+            </Suspense>
             <div className={Style.gap} />
             <div className={Style.row}>
                 <Pagination

@@ -12,9 +12,12 @@ function BreadCrumbs() {
             return (<div key={crumb}>
                 {
                     i + 1 != array.length ?
-                        <Link className={Style.crumbs} to={currentLink}>
+                        // <Link className={Style.crumbs} to={currentLink} key={crumb + i}>
+                        //     {crumb}
+                        // </Link>
+                        <a className={Style.crumbs} href={currentLink} key={crumb}>
                             {crumb}
-                        </Link>
+                        </a>
                         :
                         <p className={Style.crumbs}>
                             {crumb}

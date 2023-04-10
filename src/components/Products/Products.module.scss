@@ -1,6 +1,73 @@
 @import '../Styles/Global.module.scss';
+@import '../Styles/Animations.module.scss';
 
 
+.item,
+.skeletonItem {
+    background-color: red;
+    width: 200px;
+    overflow: hidden;
+    min-height: 360px;
+    padding: 0 0 10px 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    &,
+    * {
+        border-radius: 10px;
+    }
+
+
+    div {
+        display: flex;
+        margin: 10px 10px 0 10px;
+        min-height: 20px;
+        width: 100px;
+    }
+
+    img {
+        object-fit: cover;
+        width: 200px;
+        aspect-ratio: 3/4;
+        border-radius: 10px 10px 0 0;
+    }
+
+    p {
+        display: flex;
+        /* min-width: 100px; */
+        min-height: 24px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 10px 10px 0 10px;
+    }
+
+    p:last-child {}
+}
+
+.skeletonItem {
+    background-color: #383838 !important;
+
+    &>* {
+        animation: pulse 2s linear infinite;
+        @include background-gradient;
+    }
+
+    img {
+        background-color: #cccccc;
+    }
+
+    div {
+        background-color: #cccccc;
+    }
+
+    p {
+        background-color: #cccccc;
+        border-radius: 10px;
+    }
+}
 
 .noProduct {
     display: block;

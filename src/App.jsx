@@ -1,10 +1,11 @@
 
-import { lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import Layout from './components/Layout';
 import Home from './components/Home';
+import SkeletonProducts from './components/Products/skeleton/SkeletonProducts';
 
 const Login = lazy(() => import('./features/Auth/Login'));
 const SingUp = lazy(() => import('./features/Auth/SingUp'));

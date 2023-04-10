@@ -35,7 +35,8 @@ function ProductsList({ ProductsListNumberOfItems }) {
                 ProductsListNumberOfItems(res.headers["x-total-count"])
                 return res.data
             }, revalidateOnFocus: false,
-            dedupingInterval: 2000
+            dedupingInterval: 2000,
+            suspense: true
         }
     )
 
