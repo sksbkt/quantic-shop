@@ -68,6 +68,7 @@ function Products() {
                 />
             </div>
             <div className={Style.gap}></div>
+            <SkeletonProducts numberOfItems={numberOfItems} />
             <Suspense fallback={<SkeletonProducts numberOfItems={numberOfItems} />}>
                 <ProductsList
                     ProductsListNumberOfItems={(itemsNo) => {

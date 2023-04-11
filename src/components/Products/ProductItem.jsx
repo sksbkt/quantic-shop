@@ -1,8 +1,7 @@
 import React from "react";
 import Style from './Products.module.scss'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { ReactComponent as Heart } from '../../../public/Heart.svg'
+import { ReactComponent as Cart } from '../../../public/Cart.svg'
 
 // import useSwr from 'swr';
 function ProductItem({ product = {
@@ -12,15 +11,18 @@ function ProductItem({ product = {
 }, skeletonLoad }) {
     return <>
         <article className={`${Style.item} + ${skeletonLoad ? Style.skeletonItem : ''}`}>
-            <img src={product.productPicture} />
-            <div >
-                {!skeletonLoad ? <>
-                    <FontAwesomeIcon icon={faBasketShopping} />
-                    <FontAwesomeIcon icon={faHeart} />
-                </> : <></>}
-            </div>
-            <p>{product.productName}</p>
-            <p>{product.productPrice}</p>
+            <section className={Style.itemUpperSlice}>
+                <img src={product.productPicture} />
+                <Heart className={Style.heartIcon} />
+                {/* <FontAwesomeIcon className={Style.heartIcon} icon={faHeart} /> */}
+            </section>
+            <section className={Style.itemLowerSlice}>
+                <p className={Style.itemRow}>{product.productName}</p>
+                {!skeletonLoad ? <div className={Style.itemRow}>
+                    <p>{product.productPrice}</p>
+                    <Cart className={Style.itemIcon} />
+                </div> : <p></p>}
+            </section>
         </article>
     </>
 }
