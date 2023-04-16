@@ -141,22 +141,20 @@
 
 .filterList {
     position: relative;
-    width: 150px;
+    width: 200px;
+    z-index: 1;
 
     ul {
         position: absolute;
         top: 0;
-        left: 0;
+        width: 200px;
         background: #eee;
-        max-width: 300px;
         padding: 10px;
-        border-radius: 10px;
+        border-radius: 15px;
         border: 1px solid #acacac;
         margin: 0 auto;
-        left: -300px;
-        right: -300px;
         min-width: max-content;
-        width: 150px;
+        align-items: flex-start !important;
 
         li {
             color: #383838;

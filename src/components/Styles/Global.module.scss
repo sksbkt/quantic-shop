@@ -129,9 +129,9 @@ a {
 }
 
 .btnMd {
-    border-radius: 50px;
+    border-radius: 25px;
     min-height: 40px;
-    min-width: 100px;
+    min-width: 200px;
     gap: 10px;
     font-weight: 700;
 }
@@ -159,6 +159,7 @@ a {
 .row,
 .rowResponsive,
 .rowStart,
+.flexAlignStart,
 .rowEnd {
     display: flex;
     gap: 10px;
@@ -168,8 +169,13 @@ a {
 }
 
 .row,
-.rowResponsive {
+.rowResponsive,
+.flexAlignStart {
     justify-content: center;
+}
+
+.flexAlignStart {
+    align-items: flex-start;
 }
 
 .rowStart {
@@ -179,6 +185,8 @@ a {
 .rowEnd {
     justify-content: end;
 }
+
+
 
 //?---------------------------------------------------------
 // ? TABS

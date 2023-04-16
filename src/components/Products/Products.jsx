@@ -18,7 +18,6 @@ function Products() {
     // const [filter, setFilter] = useState('');
     const filter = useSelector((state) => state.productFilter.filter);
 
-
     const [numberOfItems, setNumberOfItems] = useState(16);
 
     const [searchParams] = useSearchParams();
@@ -57,12 +56,13 @@ function Products() {
 
     useEffect(() => {
         navigate(pageFilter())
+
         return () => {
         };
     }, [filter, paginationPage]);
     return (
         <section className={Style.mainSection}>
-            <div className={Style.rowStart}>
+            <div className={Style.flexAlignStart}>
                 <Filter
                 // click={(filterOut) => { setFilter(filterOut) }}
                 />

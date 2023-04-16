@@ -60,25 +60,23 @@ function Filter(
                                         <FilterIcon className={Style.icon} />
                                     </>
                                 ) : (
-                                    <div >
-                                        <ul>
-                                            <li>
-                                                <label htmlFor="SortSe">Sort by:</label>
-                                                <select id="SortSe" value={sortBy} onChange={(e) => {
-                                                    setSortBy(e.currentTarget.value)
-                                                }}>
-                                                    <option value={0}>Select one</option>
-                                                    <option value={'productName'}>Name</option>
-                                                    <option value={'productPrice'}>Price</option>
-                                                    <option value={'productRating'}>Rating</option>
-                                                </select>
-                                            </li>
-                                            <li>
-                                                <label htmlFor="availabilityCb">Availability:</label>
-                                                <input id="availabilityCb" type="checkbox" checked={availability} onChange={(e) => setAvailability(!availability)} />
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <ul>
+                                        <li>
+                                            <label htmlFor="SortSe">Sort by:</label>
+                                            <select id="SortSe" value={sortBy} onChange={(e) => {
+                                                setSortBy(e.currentTarget.value)
+                                            }}>
+                                                <option value={0}>Select one</option>
+                                                <option value={'productName'}>Name</option>
+                                                <option value={'productPrice'}>Price</option>
+                                                <option value={'productRating'}>Rating</option>
+                                            </select>
+                                        </li>
+                                        <li>
+                                            <label htmlFor="availabilityCb">Availability:</label>
+                                            <input id="availabilityCb" type="checkbox" checked={availability} onChange={(e) => setAvailability(!availability)} />
+                                        </li>
+                                    </ul>
                                 )}
                     </div>
                 </>
