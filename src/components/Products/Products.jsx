@@ -21,45 +21,64 @@ function Products() {
     const [numberOfItems, setNumberOfItems] = useState(16);
 
     const [searchParams] = useSearchParams();
-
     // const abort = new AbortController();
     let itemPerPage = searchParams.get('_limit') ?? 16;
     let start = searchParams.get('_start') ?? 0;
-    function pageFilter() {
-        let url;
+    // function pageFilter() {
+    //     let url;
 
+    //     if (itemPerPage <= 0 || isNaN(itemPerPage) || itemPerPage == undefined) {
+    //         itemPerPage = 16;
+    //     }
+
+    //     // console.log({ 'Page': page <= 0, 'NaN': isNaN(page), 'pageNo:': page <= 0 });
+    //     if (page == undefined || isNaN(page) || page <= 0) {
+    //         page = 1;
+    //     }
+    //     else if (!isNaN(paginationPage)) {
+    //         page = paginationPage
+    //     }
+
+    //     start = (page - 1) * itemPerPage;
+    //     // if (searchParams.toString() = '')
+    //     if (searchParams.toString() == '' || filter != '') {
+    //         url = `/products/${page}`;
+    //         setSearchParams(`${filter.length > 0 ? filter + '&' : ''}_start=${start}&_limit=${itemPerPage}`, { replace: true });
+    //     }
+    //     else {
+    //         searchParams.set('_start', start)
+    //         searchParams.set('_limit', itemPerPage)
+    //         url = `/products/${page}?&${searchParams.toString()}`;
+    //     }
+
+    //     return url;
+    // }
+    function initialLoad() {
         if (itemPerPage <= 0 || isNaN(itemPerPage) || itemPerPage == undefined) {
             itemPerPage = 16;
         }
 
-        // console.log({ 'Page': page <= 0, 'NaN': isNaN(page), 'pageNo:': page <= 0 });
-        if (page == undefined || isNaN(page) || page <= 0) {
-            page = 1;
-        }
-        else if (!isNaN(paginationPage)) {
-            page = paginationPage
-        }
-
         start = (page - 1) * itemPerPage;
-        // if (searchParams.toString() = '')
-        if (searchParams.toString() == '' || filter != '')
-            url = `/products/${page}?${filter.length > 0 ? filter + '&' : ''}_start=${start}&_limit=${itemPerPage}`;
-        else {
-            searchParams.set('_start', start)
-            searchParams.set('_limit', itemPerPage)
-            url = `/products/${page}?&${searchParams.toString()}`;
-        }
 
-        return url;
+        let search = `${filter.length > 0 ? filter + '&' : ''}_start=${start}&_limit=${itemPerPage}`;
+        if (!isNaN(paginationPage)) {
+            navigate(`/products/${paginationPage}?${search}`, { replace: true });
+        }
+        else if (isNaN(page)) {
+            navigate(`/products/1?${search}`, { replace: true });
+        } else {
+        }
     }
 
-
     useEffect(() => {
-        navigate(pageFilter())
+        // console.log('load');
+        // navigate(pageFilter())
+        initialLoad();
 
         return () => {
         };
-    }, [filter, paginationPage]);
+    },
+        [filter, paginationPage, page]);
     return (
         <section className={Style.mainSection}>
             <div className={Style.flexAlignStart}>
@@ -68,8 +87,8 @@ function Products() {
                 />
             </div>
             <div className={Style.gap}></div>
-            <SkeletonProducts numberOfItems={numberOfItems} />
-            <Suspense fallback={<SkeletonProducts numberOfItems={numberOfItems} />}>
+            {/* <SkeletonProducts numberOfItems={numberOfItems} /> */}
+            <Suspense fallback={<SkeletonProducts numberOfItems={itemPerPage} />}>
                 <ProductsList
                     ProductsListNumberOfItems={(itemsNo) => {
                         setNumberOfItems(itemsNo)

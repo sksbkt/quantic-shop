@@ -34,7 +34,8 @@ function ProductsList({ ProductsListNumberOfItems }) {
             onSuccess: res => {
                 ProductsListNumberOfItems(res.headers["x-total-count"])
                 return res.data
-            }, revalidateOnFocus: false,
+            },
+            revalidateOnFocus: false,
             dedupingInterval: 2000,
             suspense: true
         }
@@ -42,9 +43,10 @@ function ProductsList({ ProductsListNumberOfItems }) {
 
     let content = 'loading...';
 
-    if (isLoading) {
-        content = <p>{content}</p>
-    } else if (error) {
+    // if (isLoading) {
+    //     content = <p>{content}</p>
+    // } else
+    if (error) {
         content = <p>{error}</p>
     }
     else {
