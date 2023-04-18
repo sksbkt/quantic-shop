@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
-import style from './Products.module.scss'
+import Style from './Products.module.scss'
 
 import useSwr from 'swr';
 import {
@@ -9,6 +9,7 @@ import {
     productsEndpoint as cacheKey
 } from "../../api/ProductsApi";
 import ProductItem from "./ProductItem";
+import Filter from "./Filter";
 
 function ProductsList({ ProductsListNumberOfItems }) {
     const [searchParams] = useSearchParams();
@@ -52,8 +53,11 @@ function ProductsList({ ProductsListNumberOfItems }) {
     else {
         content = (
             <>
-                <div className={style.container}>
-                    {products.data.length > 0 ? products.data.map(prod => <ProductItem key={prod.productIndex} product={prod} />) : <p className={style.noProduct}>No products in this page</p>}
+                <div className={Style.container}>
+                    <div className={Style.flexAlignStart}>
+                        <Filter />
+                    </div>
+                    {products.data.length > 0 ? products.data.map(prod => <ProductItem key={prod.productIndex} product={prod} />) : <p className={Style.noProduct}>No products in this page</p>}
                 </div>
             </>
         );

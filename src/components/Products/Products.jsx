@@ -81,11 +81,8 @@ function Products() {
         [filter, paginationPage, page]);
     return (
         <section className={Style.mainSection}>
-            <div className={Style.flexAlignStart}>
-                <Filter
-                // click={(filterOut) => { setFilter(filterOut) }}
-                />
-            </div>
+            <BreadCrumbs />
+
             <div className={Style.gap}></div>
             {/* <SkeletonProducts numberOfItems={numberOfItems} /> */}
             <Suspense fallback={<SkeletonProducts numberOfItems={itemPerPage} />}>

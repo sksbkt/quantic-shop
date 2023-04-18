@@ -32,7 +32,7 @@ function App() {
         <Route path="products/:page?" element={
           <Products />
         } />
-        <Route path="ProductPreview/:id" element={
+        <Route path="ProductPreview" element={
           <ProductPreview />
         } />
         <Route path="ShoppingCart/:id" element={

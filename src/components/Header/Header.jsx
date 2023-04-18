@@ -7,6 +7,7 @@ import { ReactComponent as Hamburger } from "../../../public/Hamburger.svg";
 
 import Style from './Header.module.scss'
 import OutsideAlerter from "../../hooks/useOutSideAlerter";
+import { Link } from "react-router-dom";
 
 function Header() {
     const [menu, setMenu] = useState(false);
@@ -25,7 +26,8 @@ function Header() {
         <div className={Style.content}>
             <OutsideAlerter onClickOutSide={() => setMenu(false)} excludeRef={hamburgerButton}>
                 <div className={`${Style.hamburgerMenu} ${menu ? Style.hamburgerMenuVisible : Style.hamburgerMenuInvisible}`}>
-                    <a>Products</a>
+                    <Link to={'./'}>Home</Link>
+                    <Link to={'./products'}>Products</Link>
                     <a>Blog</a>
                     <a>Features</a>
                     <a>Contact</a>
@@ -49,7 +51,8 @@ function Header() {
                 </div>
 
                 <div className={Style.navigation}>
-                    <a>Products</a>
+                    <Link to={'./'}>Home</Link>
+                    <Link to={'./products'}>Products</Link>
                     <a>Blog</a>
                     <a>Features</a>
                     <a>Contact</a>

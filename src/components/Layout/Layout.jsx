@@ -16,7 +16,6 @@ function Layout() {
                 <Suspense>
                     <div className={Style.layOut}>
                         <Header />
-                        <BreadCrumbs />
                         <Outlet className={Style.outlet} />
                         <Footer />
                         <div className={Style.background}></div>

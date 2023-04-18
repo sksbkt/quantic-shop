@@ -16,3 +16,11 @@ export async function getProducts(filter) {
     );
     return response;
 }
+
+export async function getSingleProduct(id) {
+    console.log(id);
+    await delay();
+    const response = await productsApi.get(productsEndpoint + `?productId=${id[1]}`
+    );
+    return response;
+}
