@@ -53,7 +53,7 @@ function ProductsList({ ProductsListNumberOfItems }) {
     else {
         content = (
             <>
-                <div className={Style.container}>
+                <div className={Style.productContainer}>
                     <div className={Style.flexAlignStart}>
                         <Filter />
                     </div>

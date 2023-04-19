@@ -22,7 +22,7 @@ function Header() {
     }, [menu]);
 
 
-    return <div className={Style.container}>
+    return <div className={Style.headerContainer}>
         <div className={Style.content}>
             <OutsideAlerter onClickOutSide={() => setMenu(false)} excludeRef={hamburgerButton}>
                 <div className={`${Style.hamburgerMenu} ${menu ? Style.hamburgerMenuVisible : Style.hamburgerMenuInvisible}`}>
@@ -41,13 +41,14 @@ function Header() {
                     }}>
                         <Hamburger className={Style.hamburgerIcon} />
                     </a>
-                    <h2>Store</h2>
-                    <div className={Style.navigationElement}>
-                        <Location className={Style.navIcon} />
-                        <p>
-                            Tehran
-                        </p>
-                    </div>
+                    <h2 className={Style.logo}>Store
+                        <div className={Style.navigationElement}>
+                            <Location className={Style.navIcon} />
+                            <p>
+                                Tehran
+                            </p>
+                        </div>
+                    </h2>
                 </div>
 
                 <div className={Style.navigation}>
@@ -66,10 +67,13 @@ function Header() {
                     <a className={Style.iconBtn}>
                         <Cart className={Style.iconBtn} />
                     </a>
+                    <a className={Style.txtBtnMd}>Log in</a>
                     <div>
+
                         <a className={Style.btnMd}>Sign up</a>
                     </div>
                 </div>
+
             </div>
         </div>
         <SvgBackground style={Style.svgBackground} />

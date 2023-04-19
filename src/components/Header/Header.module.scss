@@ -1,6 +1,26 @@
 @import '../Styles/Global.module.scss';
 
-.container {
+.logo {
+    position: relative;
+
+
+    .navigationElement {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .navIcon {
+            width: 15px;
+        }
+
+        p {
+            font-size: 10pt;
+        }
+    }
+}
+
+.headerContainer {
     display: flex;
     width: 1000px;
     position: relative;
@@ -11,7 +31,7 @@
 }
 
 @media screen and (max-width:1000px) {
-    .container {
+    .headerContainer {
         width: 100vw;
     }
 
@@ -68,19 +88,31 @@
 
 .navigation {
     display: flex;
+
+    @include a-styling;
 }
 
 
 
-@media screen and (min-width:900px) {
-    .container {
-        @include a-styling();
-    }
-}
+@media screen and (min-width:900px) {}
 
 .btnMd {
     min-width: 100px;
     padding: 10xp 15px;
+}
+
+.txtBtnMd {
+    font-weight: 700;
+    min-width: 90px;
+    font-size: 13pt;
+    transition: all .2s;
+    color: #414141;
+}
+
+.txtBtnMd:hover {
+    color: #adadad;
+    // text-shadow: 1px 0px 0 #383838, -1px 0px 0 #383838, 0px 1px 0 #383838, 0px -1px 0 #383838;
+    // text-shadow: -1px -1px 0 #383838;
 }
 
 .hamburgerIcon {
@@ -92,6 +124,7 @@
 .hamburgerMenu {
     visibility: hidden;
 }
+
 
 
 @media screen and (max-width:900px) {
@@ -127,11 +160,11 @@
 
     .navigationElement {
         .navIcon {
-            width: 10px;
+            width: 15px;
         }
 
         p {
-            font-size: 12pt;
+            font-size: 10pt;
         }
     }
 
@@ -159,11 +192,13 @@
             display: flex;
             justify-content: start;
             width: 100%;
-            padding: 10px 20px;
+            height: 45px;
+            padding: 0 10px;
             background-color: #d5d5d5;
             color: #444444;
             transition: ease-out 0.2s;
             border-bottom: 1px solid #8f8f8f;
+            align-items: center;
         }
 
         a:hover {
@@ -187,10 +222,3 @@
 }
 
 .navIcon {}
-
-.navigationElement {
-    display: flex;
-    /* align-content: center; */
-    align-items: center;
-    gap: 5px;
-}
