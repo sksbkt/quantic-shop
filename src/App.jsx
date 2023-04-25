@@ -3,21 +3,21 @@ import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
-import Layout from './components/Layout';
-import Home from './components/Home';
-import SkeletonProducts from './components/Products/skeleton/SkeletonProducts';
+import Layout from './pages/components/Layout';
+import Home from './pages/Home';
+import SkeletonProducts from './pages/skeletons/SkeletonProducts';
 
 const Login = lazy(() => import('./features/Auth/Login'));
 const SingUp = lazy(() => import('./features/Auth/SingUp'));
-const ProductPreview = lazy(() => import('./components/ProductPreview'));
-const Products = lazy(() => import('./components/Products'));
+const ProductPreview = lazy(() => import('./pages/ProductPreview'));
+const Products = lazy(() => import('./pages/Products'));
 
-const Profile = lazy(() => import('./components/Profile'));
-const UserInformation = lazy(() => import('./components/Profile/UserInformation'));
-const ShoppingCartHistory = lazy(() => import('./components/Profile/ShoppingCartHistory'));
-const ShoppingCart = lazy(() => import('./components/Profile/ShoppingCart'));
+const Profile = lazy(() => import('./pages/Profile'));
+const UserInformation = lazy(() => import('./pages/Profile/UserInformation'));
+const ShoppingCartHistory = lazy(() => import('./pages/Profile/ShoppingCartHistory'));
+const ShoppingCart = lazy(() => import('./pages/Profile/ShoppingCart'));
 
-const NotFound = lazy(() => import('./components/NotFound'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (

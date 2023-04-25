@@ -1,12 +1,11 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import Header from "./../Header";
-import Footer from "./../Footer";
+import Header from "../../Header";
+import Footer from "../../Footer";
 import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
-import ErrorFallback from "./../ErrorFallBack";
+import ErrorFallback from "../../ErrorFallBack";
 
 import Style from './Layout.module.scss'
-import BreadCrumbs from "../components/BreadCrumbs";
 
 function Layout() {
     const navigate = useNavigate();

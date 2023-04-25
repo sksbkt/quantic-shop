@@ -11,6 +11,7 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    aspect-ratio: 9/16;
 
     &,
     * {
@@ -33,7 +34,7 @@
     }
 
     .itemUpperSlice {
-        width: 200px;
+        width: 100%;
         overflow: hidden;
         aspect-ratio: 3/4;
         border-radius: 10px 10px 0 0;
@@ -47,7 +48,7 @@
             top: 0;
             left: 0;
             object-fit: cover;
-            width: 200px;
+            width: 100%;
         }
 
         .heartIcon {
@@ -192,6 +193,8 @@
         width: 250px;
     }
 }
+
+
 
 @media screen and (max-width:550px) {
     .productContainer {

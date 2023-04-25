@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import OutsideAlerter from "../../hooks/useOutSideAlerter";
-import { ReactComponent as ArrowUpIcon } from '../../../public/arrow-up-long-solid.svg'
-import { ReactComponent as ArrowDownIcon } from '../../../public/arrow-down-long-solid.svg'
-import { ReactComponent as FilterIcon } from '../../../public/filter-solid.svg'
+import OutsideAlerter from "../../../hooks/useOutSideAlerter";
+import { ReactComponent as ArrowUpIcon } from '../../../../public/arrow-up-long-solid.svg'
+import { ReactComponent as ArrowDownIcon } from '../../../../public/arrow-down-long-solid.svg'
+import { ReactComponent as FilterIcon } from '../../../../public/filter-solid.svg'
 
 // import { TEXT_STRINGS_EN } from '../../Localization/Language'
 
-import Style from "./Products.module.scss"
+import Style from "./ProductsComponents.module.scss"
 import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter, setAscending } from "../../redux/Slices/filterSlice";
+import { setFilter, setAscending } from "../../../redux/Slices/filterSlice";
 
 
 
@@ -28,10 +28,10 @@ function Filter(
     const [searchParams] = useSearchParams();
     const [listOpen, setListOpen] = useState(false);
     const [sortBy, setSortBy] = useState(searchParams.get('_sort') ?? '');
-    const [availability, setAvailability] = useState(searchParams.get('productIsAvailable') == 'true' ? true : false);
+    const [availability, setAvailability] = useState(searchParams.get('availability') == 'true' ? true : false);
 
     useEffect(() => {
-        let link = `${sortBy.length > 0 ? `_sort=${sortBy}&_order=${ascending ? 'asc' : 'desc'}` : ''}${availability ? `${'&productIsAvailable=true'}` : ''}`;
+        let link = `${sortBy.length > 0 ? `_sort=${sortBy}&_order=${ascending ? 'asc' : 'desc'}` : ''}${availability ? `${'&availability=true'}` : ''}`;
         // click(link)
         //? setting filter to store while using dispatch and use setFilter action
         dispatch(setFilter(link));
@@ -65,11 +65,12 @@ function Filter(
                                             <label htmlFor="SortSe">Sort by:</label>
                                             <select id="SortSe" value={sortBy} onChange={(e) => {
                                                 setSortBy(e.currentTarget.value)
+                                                console.log(sortBy);
                                             }}>
                                                 <option value={0}>Select one</option>
-                                                <option value={'productName'}>Name</option>
-                                                <option value={'productPrice'}>Price</option>
-                                                <option value={'productRating'}>Rating</option>
+                                                <option value={'name'}>Name</option>
+                                                <option value={'price'}>Price</option>
+                                                <option value={'rating'}>Rating</option>
                                             </select>
                                         </li>
                                         <li>

@@ -4,6 +4,12 @@ a {
 }
 
 //?---------------------------------------------------------
+// ? Colors
+//?---------------------------------------------------------
+$rating-color: #e0d74d;
+$rating-color-light: #e0d74d;
+
+//?---------------------------------------------------------
 // ? Containers
 //?---------------------------------------------------------
 
@@ -12,6 +18,7 @@ a {
     align-items: center;
     flex-direction: column;
     max-width: 1000px;
+    width: 100%;
 }
 
 // .container {
@@ -123,6 +130,50 @@ a {
         align-content: center;
         justify-content: center;
     }
+}
+
+.centerComboBtn,
+.comboBtn {
+    background-color: #44005B;
+    border: 1px solid #808080;
+    border-radius: 30px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+
+
+    select {
+        border-radius: 10px;
+        border: 0;
+        background-color: transparent;
+    }
+
+    .colorCircle {
+        width: 30px;
+        height: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .icon {
+        fill: #ffffff;
+        width: 25px;
+    }
+
+    a {
+        color: #ffffff;
+    }
+}
+
+.comboBtn {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.centerComboBtn {
+    justify-content: center;
+    align-items: center;
 }
 
 //?---------------------------------------------------------

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from './Products.module.scss'
+import style from './ProductsComponents.module.scss'
 function Pagination({ paginationPage, paginationPageLimit, paginationNumberOfItems, paginationSelectedPage }) {
     const [page, setPage] = useState(paginationSelectedPage);
     const numberOfPages = (paginationNumberOfItems / paginationPageLimit).toFixed();

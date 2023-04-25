@@ -1,0 +1,50 @@
+@import '../../Products/Products.module.scss';
+
+
+.ratingContainer {
+    display: flex;
+    gap: 2px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.star,
+.starEmpty {
+    width: 15px;
+}
+
+.star {
+    fill: $rating-color;
+    stroke: $rating-color-light;
+}
+
+
+.starEmpty {
+    fill: transparent;
+    stroke-width: 3px;
+    stroke: $rating-color-light;
+}
+
+.previewRatingContainer {
+    display: flex;
+    gap: 2px;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .previewStar,
+    .previewStarEmpty {
+        width: 25px;
+    }
+
+    .previewStar {
+        fill: #1f1f1f;
+        stroke: #1f1f1f;
+
+    }
+
+    .previewStarEmpty {
+        fill: transparent;
+        stroke-width: 1px;
+        stroke: #1f1f1f;
+    }
+}

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import Style from './BreadCrumbs.module.scss'
-function BreadCrumbs() {
+function BreadCrumbs({ prod }) {
     const location = useLocation();
 
     let currentLink = '';
@@ -24,10 +24,18 @@ function BreadCrumbs() {
                         </p>
                 }
                 <p>/</p>
+                {i + 1 == array.length && prod ?
+                    (<p className={Style.crumbs}>
+                        {prod.productName}
+                    </p>)
+                    : ''}
             </div >);
         });
     if (crumbs.length > 0) {
-        content = (<div className={Style.breadCrumbContainer}>{crumbs}</div>)
+        content = (<div className={Style.breadCrumbContainer}>
+            {crumbs}
+
+        </div>)
     }
 
     return content;
