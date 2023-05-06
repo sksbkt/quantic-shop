@@ -72,7 +72,7 @@ function ProductPreview() {
                     <p>{prod.gender}</p>
                     <p>{prod.brand}</p>
                     <p>{prod.description}</p>
-                    <p>Rating:</p>
+                    <p>Review:</p>
                     <Rating rating={prod.rating} preview={true} />
                 </div>
             </article >

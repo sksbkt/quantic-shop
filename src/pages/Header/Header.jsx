@@ -61,11 +61,11 @@ function Header() {
 
                 <div className={Style.row}>
 
-                    <a className={Style.iconBtn}>
+                    <a className={Style.iconBtnTransparent}>
                         <Search />
                     </a>
-                    <a className={Style.iconBtn}>
-                        <Cart className={Style.iconBtn} />
+                    <a className={Style.iconBtnTransparent}>
+                        <Cart className={Style.iconBtnTransparent} />
                     </a>
                     <a className={Style.txtBtnMd}>Log in</a>
                     <div>

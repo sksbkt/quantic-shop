@@ -96,24 +96,6 @@
 
 @media screen and (min-width:900px) {}
 
-.btnMd {
-    min-width: 100px;
-    padding: 10xp 15px;
-}
-
-.txtBtnMd {
-    font-weight: 700;
-    min-width: 90px;
-    font-size: 13pt;
-    transition: all .2s;
-    color: #414141;
-}
-
-.txtBtnMd:hover {
-    color: #adadad;
-    // text-shadow: 1px 0px 0 #383838, -1px 0px 0 #383838, 0px 1px 0 #383838, 0px -1px 0 #383838;
-    // text-shadow: -1px -1px 0 #383838;
-}
 
 .hamburgerIcon {
     height: 30px;

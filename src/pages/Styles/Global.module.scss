@@ -75,7 +75,8 @@ $rating-color-light: #e0d74d;
 
 .btn:hover,
 .btnSm:hover,
-.btnMd:hover {
+.btnMd:hover,
+.iconBtn:hover {
     background-color: #808080;
     color: #ffffff;
 
@@ -114,14 +115,46 @@ $rating-color-light: #e0d74d;
     // min-width: 200px;
     gap: 10px;
     font-weight: 700;
+    min-width: 100px;
+    padding: 10xp 15px;
+}
+
+
+.txtBtnMd {
+    font-weight: 700;
+    min-width: 90px;
+    font-size: 13pt;
+    transition: all .2s;
+    color: #414141;
+}
+
+.txtBtnMd:hover {
+    color: #adadad;
+    // text-shadow: 1px 0px 0 #383838, -1px 0px 0 #383838, 0px 1px 0 #383838, 0px -1px 0 #383838;
+    // text-shadow: -1px -1px 0 #383838;
 }
 
 .iconBtn {
-    height: 17px;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    fill: #383838;
+    transition: 0.2s all;
+    color: #383838;
+    cursor: pointer;
+    background-color: #e2e2e2;
+    align-items: center;
+    border-radius: 25px;
+    justify-content: center;
+    border: 1px solid #afafaf;
+}
+
+
+.iconBtnTransparent,
+.iconBtn {
     fill: #383838;
     transition: .2s all;
     color: #383838;
-    width: 15px;
     cursor: pointer;
 
     * {
@@ -132,13 +165,19 @@ $rating-color-light: #e0d74d;
     }
 }
 
+.iconBtnTransparent:hover {
+    fill: #808080;
+    stroke-width: 1px;
+}
+
 .centerComboBtn,
 .comboBtn {
     background-color: #44005B;
     border: 1px solid #808080;
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 0 20px;
     display: flex;
+    height: 50px;
     flex-direction: row;
     width: 250px;
 
@@ -150,8 +189,8 @@ $rating-color-light: #e0d74d;
     }
 
     .colorCircle {
-        width: 30px;
-        height: 20px;
+        aspect-ratio: 4/3;
+        height: 35px;
         border-radius: 10px;
         cursor: pointer;
     }

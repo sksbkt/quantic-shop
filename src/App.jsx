@@ -7,8 +7,10 @@ import Layout from './pages/components/Layout';
 import Home from './pages/Home';
 import SkeletonProducts from './pages/skeletons/SkeletonProducts';
 
-const Login = lazy(() => import('./features/Auth/Login'));
-const SingUp = lazy(() => import('./features/Auth/SingUp'));
+// const Login = lazy(() => import('./features/Auth/Login'));
+// const SingUp = lazy(() => import('./features/Auth/SingUp'));
+const Login = lazy(() => import('./pages/Auth/Login'));
+const Register = lazy(() => import('./pages/Auth/Register'));
 const ProductPreview = lazy(() => import('./pages/ProductPreview'));
 const Products = lazy(() => import('./pages/Products'));
 
@@ -38,8 +40,8 @@ function App() {
         <Route path="ShoppingCart/:id" element={
           <ShoppingCart />
         } />
-        <Route path="SignUp" element={
-          <SingUp />
+        <Route path="register" element={
+          <Register />
         } />
         <Route path="login" element={
           <Login />

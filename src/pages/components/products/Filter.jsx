@@ -10,7 +10,8 @@ import { ReactComponent as FilterIcon } from '../../../../public/filter-solid.sv
 import Style from "./ProductsComponents.module.scss"
 import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter, setAscending } from "../../../redux/Slices/filterSlice";
+import { setFilter, setAscending } from "../../../Redux/Slices/FilterSlice";
+
 
 
 
