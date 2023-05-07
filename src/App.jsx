@@ -40,15 +40,15 @@ function App() {
         <Route path="ShoppingCart/:id" element={
           <ShoppingCart />
         } />
+
         <Route path="register" element={
           <Register />
         } />
-        <Route path="login" element={
-          <Login />
-        } />
-
         {/* PrivateRoute  */}
-        <Route path="Profile/:username" element={<Profile />} >
+        <Route path="Profile" element={<Profile />} >
+          <Route path="login" element={
+            <Login />
+          } />
           <Route index element={<UserInformation />} />
           <Route path="ShoppingCart/:id" element={<ShoppingCart />} />
           <Route path="ShoppingCartHistory/:page?" element={<ShoppingCartHistory />} />

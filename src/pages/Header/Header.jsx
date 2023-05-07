@@ -8,14 +8,16 @@ import { ReactComponent as Hamburger } from "../../../public/Hamburger.svg";
 import Style from './Header.module.scss'
 import OutsideAlerter from "../../hooks/useOutSideAlerter";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../../Redux/Slices/UserSlice";
 
 function Header() {
     const [menu, setMenu] = useState(false);
     const hamburgerButton = useRef(null);
-
+    const user = useSelector(selectUser);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-
 
         return () => {
         };
@@ -67,11 +69,26 @@ function Header() {
                     <a className={Style.iconBtnTransparent}>
                         <Cart className={Style.iconBtnTransparent} />
                     </a>
-                    <a className={Style.txtBtnMd}>Log in</a>
-                    <div>
+                    {!user ?
+                        <>
+                            <a className={Style.txtBtnMd}>Log in</a>
+                            <div>
 
-                        <a className={Style.btnMd}>Sign up</a>
-                    </div>
+                                <a className={Style.btnMd}>Sign up</a>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <p>{user.userName}</p>
+                            <a
+                                className={Style.iconBtnTransparent}
+                                onClick={() => dispatch(logout())}
+                            >
+
+                            </a>
+                        </>
+
+                    }
                 </div>
 
             </div>
