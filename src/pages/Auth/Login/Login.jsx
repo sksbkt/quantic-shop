@@ -6,6 +6,7 @@ import { ReactComponent as Reset } from '../../../../public/Reset.svg'
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../../Redux/Slices/UserSlice";
 import { useNavigate } from "react-router-dom";
+import useInput from "../../../hooks/useInput";
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -13,15 +14,18 @@ function Login() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
+
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log('submits');
         dispatch(login({
             userName: username,
-            password: password,
             loggedIn: true
-        }))
+        }));
+        setStoreUser(username);
+
     }
 
 
@@ -37,7 +41,8 @@ function Login() {
     }, [username, password]);
 
     useEffect(() => {
-        if (user) navigate('/profile')
+        console.log('nav', user !== null && user != '');
+        if (user !== null) navigate('/profile');
         return () => {
         };
     }, [user]);

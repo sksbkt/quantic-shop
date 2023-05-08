@@ -1,25 +1,34 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { selectUser } from "../../Redux/Slices/UserSlice";
 import Login from "../Auth/Login";
 
 function Profile() {
     const user = useSelector(selectUser);
+    const navigate = useNavigate();
     useEffect(() => {
-        console.log(user);
+        console.log(user === null);
+        if (user === null)
+            navigate('/login');
+
         return () => {
         };
-    }, [user]);
+    }, []);
 
     return (
-        <>
-            {user ?
-                <h1>profile</h1> :
-                // <Outlet />
-                <Login />
-            }
-        </>
+        <h1>profile</h1>
+        // <>
+        //     {
+        //         user ?
+        //             <>
+        //                 <h1>profile</h1>
+        //                 <Outlet />
+        //             </>
+        //             :
+        //             <Login />
+        //     }
+        // </>
     );
 }
 

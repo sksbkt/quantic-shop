@@ -84,7 +84,6 @@ function Header() {
                                 className={Style.iconBtnTransparent}
                                 onClick={() => dispatch(logout())}
                             >
-
                             </a>
                         </>
 

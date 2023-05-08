@@ -1,11 +1,14 @@
 
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import Layout from './pages/components/Layout';
 import Home from './pages/Home';
 import SkeletonProducts from './pages/skeletons/SkeletonProducts';
+import useInput from './hooks/useInput';
+import { useSelector, useDispatch } from 'react-redux';
+import { login, selectUser } from './Redux/Slices/UserSlice';
 
 // const Login = lazy(() => import('./features/Auth/Login'));
 // const SingUp = lazy(() => import('./features/Auth/SingUp'));
@@ -20,8 +23,24 @@ const ShoppingCartHistory = lazy(() => import('./pages/Profile/ShoppingCartHisto
 const ShoppingCart = lazy(() => import('./pages/Profile/ShoppingCart'));
 
 const NotFound = lazy(() => import('./pages/NotFound'))
-
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
+  useEffect(() => {
+    console.log(user);
+    if (user != null && user.useName)
+      setStoreUser(user.userName);
+    else if (storeUser && !user)
+      dispatch(login({
+        userName: storeUser,
+        loggedIn: true
+      }));
+
+    return () => {
+    };
+  }, [user]);
+
   return (
 
     <Routes>
@@ -46,9 +65,9 @@ function App() {
         } />
         {/* PrivateRoute  */}
         <Route path="Profile" element={<Profile />} >
-          <Route path="login" element={
+          {/* <Route path="login" element={
             <Login />
-          } />
+          } /> */}
           <Route index element={<UserInformation />} />
           <Route path="ShoppingCart/:id" element={<ShoppingCart />} />
           <Route path="ShoppingCartHistory/:page?" element={<ShoppingCartHistory />} />
