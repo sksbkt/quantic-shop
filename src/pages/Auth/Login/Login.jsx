@@ -5,26 +5,35 @@ import Style from '../Auth.module.scss'
 import { ReactComponent as Reset } from '../../../../public/Reset.svg'
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../../Redux/Slices/UserSlice";
-import { useNavigate } from "react-router-dom";
-import useInput from "../../../hooks/useInput";
+import { useLocation, useNavigate } from "react-router-dom";
+// import useInput from "../../../hooks/useInput";
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const user = useSelector(selectUser);
+    const location = useLocation();
+    const state = location.state;
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
+    // const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
 
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log('submits');
         dispatch(login({
             userName: username,
             loggedIn: true
         }));
-        setStoreUser(username);
+        if (state) {
+            navigate(state.from);
+        }
+        else if (user !== null) {
+            navigate('/profile');
+        }
+        return () => {
+        };
+        // setStoreUser(username);
 
     }
 
@@ -33,19 +42,22 @@ function Login() {
         //? Validations:WIP
         //? username
         if (username.length > 6)
-            console.log('username is too big')
-        else
-            console.clear();
+            console.log('username is too big');
         return () => {
         };
     }, [username, password]);
 
-    useEffect(() => {
-        console.log('nav', user !== null && user != '');
-        if (user !== null) navigate('/profile');
-        return () => {
-        };
-    }, [user]);
+    // useEffect(() => {
+    //     console.log('FROM', from);
+    //     if (from) {
+    //         navigate(from);
+    //     }
+    //     else if (user !== null) {
+    //         navigate('/profile');
+    //     }
+    //     return () => {
+    //     };
+    // }, [user]);
 
     return <>
         <BreadCrumbs />

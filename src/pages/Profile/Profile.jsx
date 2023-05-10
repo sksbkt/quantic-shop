@@ -14,7 +14,7 @@ function Profile() {
 
         return () => {
         };
-    }, []);
+    }, [user]);
 
     return (
         <h1>profile</h1>

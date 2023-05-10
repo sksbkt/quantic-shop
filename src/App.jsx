@@ -1,14 +1,14 @@
 
-import { Suspense, lazy, useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import Layout from './pages/components/Layout';
 import Home from './pages/Home';
-import SkeletonProducts from './pages/skeletons/SkeletonProducts';
+
 import useInput from './hooks/useInput';
-import { useSelector, useDispatch } from 'react-redux';
-import { login, selectUser } from './Redux/Slices/UserSlice';
+import { useDispatch } from 'react-redux';
+import { login } from './Redux/Slices/UserSlice';
 
 // const Login = lazy(() => import('./features/Auth/Login'));
 // const SingUp = lazy(() => import('./features/Auth/SingUp'));
@@ -24,22 +24,19 @@ const ShoppingCart = lazy(() => import('./pages/Profile/ShoppingCart'));
 
 const NotFound = lazy(() => import('./pages/NotFound'))
 function App() {
-  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
   useEffect(() => {
-    console.log(user);
-    if (user != null && user.useName)
-      setStoreUser(user.userName);
-    else if (storeUser && !user)
+    console.log('LOOP');
+    if (storeUser != null && storeUser != '') {
       dispatch(login({
         userName: storeUser,
         loggedIn: true
-      }));
-
+      }))
+    }
     return () => {
     };
-  }, [user]);
+  }, [storeUser]);
 
   return (
 

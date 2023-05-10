@@ -36,6 +36,8 @@ $rating-color-light: #e0d74d;
 //?---------------------------------------------------------
 // ? BUTTONS
 //?---------------------------------------------------------
+
+
 .btn,
 .btnSm,
 .btnMd {
@@ -109,16 +111,41 @@ $rating-color-light: #e0d74d;
     }
 }
 
-.btnMd {
+// .btnMd {
+//     border-radius: 25px;
+//     min-height: 40px;
+//     // min-width: 200px;
+//     gap: 10px;
+//     font-weight: 700;
+//     min-width: 100px;
+//     padding: 10xp 15px;
+// }
+.btnMd,
+.btnIconTxt {
+    display: flex;
+    align-items: center;
+    padding: 0px 14px;
     border-radius: 25px;
     min-height: 40px;
-    // min-width: 200px;
-    gap: 10px;
+    /* min-width: 200px; */
+    /* gap: 3px; */
     font-weight: 700;
-    min-width: 100px;
-    padding: 10xp 15px;
+    justify-content: center;
 }
 
+.btnMd {
+    min-width: 100px;
+}
+
+.btnIconTxt {
+    width: 100px;
+
+    .icon {
+        fill: #383838;
+        width: 18px;
+    }
+
+}
 
 .txtBtnMd {
     font-weight: 700;
@@ -225,7 +252,6 @@ $rating-color-light: #e0d74d;
 .flexAlignStart,
 .rowEnd {
     display: flex;
-    gap: 10px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -235,6 +261,7 @@ $rating-color-light: #e0d74d;
 .rowResponsive,
 .flexAlignStart {
     justify-content: center;
+    gap: 10px;
 }
 
 .flexAlignStart {
@@ -292,6 +319,13 @@ $rating-color-light: #e0d74d;
 @media screen and (max-width:700px) {}
 
 @media screen and (max-width:550px) {}
+
+//?---------------------------------------------------------
+// ? spacing
+//?---------------------------------------------------------
+.gap {
+    gap: 10px;
+}
 
 //?---------------------------------------------------------
 // ? mixins
