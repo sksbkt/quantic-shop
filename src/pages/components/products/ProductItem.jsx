@@ -25,7 +25,7 @@ function ProductItem({ product = {
                     <Rating rating={product.rating} />
                 </div>
                 {!skeletonLoad ? <div className={Style.itemRow}>
-                    <p>{product.price}</p>
+                    <p className={product.availability ? Style.white : Style.black}>{product.price}</p>
                     <Cart className={Style.itemIcon} />
                 </div> : <p></p>}
             </section>

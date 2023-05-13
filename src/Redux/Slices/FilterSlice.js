@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    filter: { sortBy: '', order: '', availability: '' },
-    ascending: false,
+    // filter: { sortBy: '', order: '', availability: '' },
+    filter: { sortBy: '', ascending: false, availability: false },
+    search: ''
 };
 export const filterSlice = createSlice({
     name: 'ProductFilter',
@@ -11,10 +12,16 @@ export const filterSlice = createSlice({
         setFilter: (state, action) => {
             state.filter = action.payload;
         },
-        setAscending: (state, action) => {
-            state.ascending = action.payload;
+        setSearch: (state, action) => {
+            state.search = action.payload;
         }
     }
 });
-export const { setFilter, setAscending } = filterSlice.actions;
+export const { setFilter, setSearch } = filterSlice.actions;
+export function selectFilter(state) {
+    return state.productFilter.filter;
+}
+export function selectSearch(state) {
+    return state.productFilter.search;
+}
 export default filterSlice.reducer;

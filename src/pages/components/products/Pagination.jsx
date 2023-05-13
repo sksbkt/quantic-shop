@@ -5,7 +5,6 @@ function Pagination({ paginationPage, paginationPageLimit, paginationNumberOfIte
     const numberOfPages = (paginationNumberOfItems / paginationPageLimit).toFixed();
 
     const pages = [];
-
     for (let index = 0; index < numberOfPages; index++) {
         const value = index + 1;
         pages.push(

@@ -1,14 +1,14 @@
-import { useSearchParams } from "react-router-dom";
+export default function userSearchParamsParser(filter) {
+    let search = '';
 
-export function searchParams(searchParamsStringArray) {
-
-    switch (searchParamsStringArray) {
-        case '_sort':
-            return { '_sort': 'productName' }
-        case '_order':
-            return { '_order': 'asc' }
-        default:
-            break;
+    if (filter.sortBy) search += `_sort=` + filter.sortBy + '&'
+    if (filter.availability) search += 'availability=true' + '&'
+    if (filter.ascending) {
+        search += '_order=asc' + '&'
     }
-    return params;
+    else {
+        search += '_order=desc' + '&'
+    }
+
+    return search;
 }

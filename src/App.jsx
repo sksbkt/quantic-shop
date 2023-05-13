@@ -27,7 +27,6 @@ function App() {
   const dispatch = useDispatch();
   const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
   useEffect(() => {
-    console.log('LOOP');
     if (storeUser != null && storeUser != '') {
       dispatch(login({
         userName: storeUser,
