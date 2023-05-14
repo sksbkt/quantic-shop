@@ -5,10 +5,8 @@ import { ReactComponent as ArrowUpIcon } from '../../../../public/arrow-up-long-
 import { ReactComponent as ArrowDownIcon } from '../../../../public/arrow-down-long-solid.svg'
 import { ReactComponent as FilterIcon } from '../../../../public/filter-solid.svg'
 
-// import { TEXT_STRINGS_EN } from '../../Localization/Language'
 
 import Style from "./ProductsComponents.module.scss"
-import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter, selectFilter } from "../../../Redux/Slices/FilterSlice";
 
@@ -19,13 +17,21 @@ function Filter() {
 
     //? we use dispatch for setting filter to store
     const dispatch = useDispatch();
+    const filter = useSelector(selectFilter);
+
 
     const [sortBy, setSortBy] = useState('');
     const [ascending, setAscending] = useState(false);
     const [availability, setAvailability] = useState(false);
-
     const [listOpen, setListOpen] = useState(false);
 
+    useEffect(() => {
+        setSortBy(filter.sortBy);
+        setAscending(filter.ascending);
+        setAvailability(filter.availability);
+        return () => {
+        };
+    }, [filter]);
 
     useEffect(() => {
         dispatch(setFilter({ sortBy, ascending, availability }));
@@ -72,7 +78,7 @@ function Filter() {
                                                 id="availabilityCb"
                                                 type="checkbox"
                                                 checked={availability}
-                                                onChange={(e) => setAvailability(!availability)}
+                                                onChange={() => setAvailability(!availability)}
                                             />
                                         </li>
                                     </ul>
@@ -84,19 +90,14 @@ function Filter() {
         <a className={`${Style.btnSm} ${Style.btn}`} role="button"
             onClick={() => {
                 setAscending(!ascending)
-                // dispatch(setAscending(!ascending))
             }
             } >
-            {/* <div className={Style.az}>
-                    <p>A</p>
-                    <p>Z</p>
-                </div> */}
+
             {
                 ascending ?
                     (<ArrowUpIcon className={Style.icon} />) :
                     (<ArrowDownIcon className={Style.icon} />)
             }
-            {/* <FontAwesomeIcon icon={ascending ? faArrowUp : faArrowDown} className={Style.icon} /> */}
         </a>
     </>
 }

@@ -24,12 +24,10 @@ listenMiddleware.startListening({
         switch (action.type) {
             case login.type:
                 localStorage.setItem('userName', JSON.stringify(action.payload.userName));
-                console.log('User has logged in');
                 break;
             case logout.type:
                 localStorage.removeItem('userName');
                 // localStorage.setItem('userName', action.payload.userName);
-                console.log('User has logged out');
                 break
 
             default:
