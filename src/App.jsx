@@ -25,6 +25,8 @@ const ShoppingCart = lazy(() => import('./pages/Profile/ShoppingCart'));
 const NotFound = lazy(() => import('./pages/NotFound'))
 function App() {
   const dispatch = useDispatch();
+  //? custom hook for testing
+  //? could be simply replace with local storage functions direct call
   const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
   useEffect(() => {
     if (storeUser != null && storeUser != '') {

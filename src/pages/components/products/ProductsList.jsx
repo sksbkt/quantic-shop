@@ -17,15 +17,13 @@ import Pagination from "./Pagination";
 
 function ProductsList() {
     let { page } = useParams();
-    // const [searchParams] = useSearchParams();
-    // const filter = searchParams.toString();
+
     const navigate = useNavigate();
 
     const filter = useSelector(selectFilter);
     const dispatch = useDispatch();
 
     const [searchParams] = useSearchParams();
-
 
 
     const [numberOfItems, setNumberOfItems] = useState(16);

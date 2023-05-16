@@ -5,6 +5,7 @@ import { ReactComponent as Search } from "../../../public/Search.svg";
 import { ReactComponent as Cart } from "../../../public/Cart.svg";
 import { ReactComponent as Hamburger } from "../../../public/Hamburger.svg";
 import { ReactComponent as ArrowDown } from "../../../public/arrow-down-rounded.svg";
+import { ReactComponent as Avatar } from "../../../public/avatar.svg";
 
 import Style from './Header.module.scss'
 import OutsideAlerter from "../../hooks/useOutSideAlerter";
@@ -14,8 +15,10 @@ import { logout, selectUser } from "../../Redux/Slices/UserSlice";
 import useInput from "../../hooks/useInput";
 
 function Header() {
-    const [menu, setMenu] = useState(false);
+    const [navMenu, setNavMenu] = useState(false);
+    const [profileMenu, setProfileMenu] = useState(false);
     const hamburgerButton = useRef(null);
+    const profileMenuButton = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -26,8 +29,8 @@ function Header() {
 
     return <div className={Style.headerContainer}>
         <div className={Style.content}>
-            <OutsideAlerter onClickOutSide={() => setMenu(false)} excludeRef={hamburgerButton}>
-                <div className={`${Style.hamburgerMenu} ${menu ? Style.hamburgerMenuVisible : Style.hamburgerMenuInvisible}`}>
+            <OutsideAlerter onClickOutSide={() => setNavMenu(false)} excludeRef={hamburgerButton}>
+                <div className={`${Style.hamburgerMenu} ${navMenu ? Style.hamburgerMenuVisible : Style.hamburgerMenuInvisible}`}>
                     <Link to={'./'}>Home</Link>
                     <Link to={'./products'}>Products</Link>
                     <a>Blog</a>
@@ -37,10 +40,13 @@ function Header() {
             </OutsideAlerter>
             <div className={Style.headerText}>
                 <div className={Style.rowResponsive}>
-                    <a ref={hamburgerButton} onClick={() => {
-                        console.log('CLICK');
-                        setMenu(!menu);
-                    }}>
+                    <a
+                        className={Style.hamburgerButton}
+                        ref={hamburgerButton}
+                        onClick={() => {
+                            console.log('CLICK');
+                            setNavMenu(!navMenu);
+                        }}>
                         <Hamburger className={Style.hamburgerIcon} />
                     </a>
                     <h2 className={Style.logo}>Store
@@ -78,16 +84,54 @@ function Header() {
                             <a className={Style.iconBtnTransparent}>
                                 <Cart className={Style.iconBtnTransparent} />
                             </a>
-                            <Link className={Style.btnIconTxt}
-                                onClick={() => {
-                                    resetUser();
-                                    dispatch(logout());
-                                }
-                                }>
-                                <p>{user.userName}</p>
-
-                                <ArrowDown className={Style.icon} />
-                            </Link>
+                            <div className={Style.profileMenuContainer}>
+                                <OutsideAlerter onClickOutSide={() => {
+                                    setProfileMenu(false);
+                                }} excludeRef={profileMenuButton}>
+                                    <div
+                                        className={`${profileMenu ? Style.profileMenuVisible : Style.profileMenuInvisible}`}
+                                        ref={profileMenuButton}
+                                    >
+                                        <a
+                                            onClick={() => {
+                                                if (!profileMenu) {
+                                                    setProfileMenu(true);
+                                                }
+                                            }}
+                                            className={Style.userHeader}
+                                        >
+                                            <p>{user.userName}</p>
+                                            <Avatar className={Style.avatar} />
+                                            <ArrowDown className={Style.downIcon} />
+                                        </a>
+                                        {profileMenu ? <>
+                                            <ul className={Style.profileMenuList}>
+                                                <li className={Style.profileMenuItem}>
+                                                    <Link>Shopping Cart</Link>
+                                                </li>
+                                                <li className={Style.profileMenuItem}>
+                                                    <Link>Purchase history</Link>
+                                                </li>
+                                                {/* <li className={Style.profileMenuItem}>
+                                                    <Link>Profile</Link>
+                                                </li> */}
+                                                <li className={Style.profileMenuItem}>
+                                                    <Link
+                                                        className={Style.cautionText}
+                                                        onClick={() => {
+                                                            resetUser();
+                                                            dispatch(logout());
+                                                        }
+                                                        }>
+                                                        Logout
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </> : <></>
+                                        }
+                                    </div>
+                                </OutsideAlerter>
+                            </div>
                         </>
 
                     }

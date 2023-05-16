@@ -1,18 +1,21 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 
 import { login, logout } from '../Slices/UserSlice'
+import useInput from "../../hooks/useInput";
 
 //? /////////////////////////////////////////
 //? Middleware
 //? we observe triggered events here
 //? /////////////////////////////////////////
 
-const listenMiddleware = createListenerMiddleware();
-listenMiddleware.startListening({
-    matcher: isAnyOf(login, logout),
+const AuthListenMiddleware = createListenerMiddleware();
+AuthListenMiddleware.startListening({
+    matcher: isAnyOf(
+        login,
+        logout
+    ),
     // actionCreator: login,
     effect: (action, listenApi) => {
-
         //? can cancel other active lister instances
         listenApi.cancelActiveListeners();
 
@@ -37,4 +40,5 @@ listenMiddleware.startListening({
     }
 
 })
-export default listenMiddleware;
+
+export default AuthListenMiddleware.middleware;
