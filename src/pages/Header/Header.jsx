@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import SvgBackground from "../../Public/SvgBackgroud";
-import { ReactComponent as Location } from "../../../public/location.svg";
-import { ReactComponent as Search } from "../../../public/Search.svg";
-import { ReactComponent as Cart } from "../../../public/Cart.svg";
-import { ReactComponent as Hamburger } from "../../../public/Hamburger.svg";
-import { ReactComponent as ArrowDown } from "../../../public/arrow-down-rounded.svg";
-import { ReactComponent as Avatar } from "../../../public/avatar.svg";
+import { ReactComponent as Location } from "../../Public/location.svg";
+import { ReactComponent as Search } from "../../public/Search.svg";
+import { ReactComponent as Cart } from "../../public/Cart.svg";
+import { ReactComponent as Hamburger } from "../../public/Hamburger.svg";
+import { ReactComponent as ArrowDown } from "../../public/arrow-down-rounded.svg";
+import { ReactComponent as Avatar } from "../../public/avatar.svg";
 
 import Style from './Header.module.scss'
 import OutsideAlerter from "../../hooks/useOutSideAlerter";
@@ -13,10 +13,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../Redux/Slices/UserSlice";
 import useInput from "../../hooks/useInput";
+import Notification from "../components/notification/notifications";
 
 function Header() {
     const [navMenu, setNavMenu] = useState(false);
-    const [profileMenu, setProfileMenu] = useState(false);
+    const [profileMenuOpen, setProfileMenuOpen] = useState(false);
     const hamburgerButton = useRef(null);
     const profileMenuButton = useRef(null);
     const navigate = useNavigate();
@@ -67,7 +68,6 @@ function Header() {
                     <a>Contact</a>
                 </div>
 
-
                 <a className={Style.iconBtnTransparent}>
                     <Search />
                 </a>
@@ -86,35 +86,42 @@ function Header() {
                             </a>
                             <div className={Style.profileMenuContainer}>
                                 <OutsideAlerter onClickOutSide={() => {
-                                    setProfileMenu(false);
+                                    setProfileMenuOpen(false);
                                 }} excludeRef={profileMenuButton}>
                                     <div
-                                        className={`${profileMenu ? Style.profileMenuVisible : Style.profileMenuInvisible}`}
+                                        className={`${profileMenuOpen ? Style.profileMenuVisible : Style.profileMenuInvisible}`}
                                         ref={profileMenuButton}
                                     >
                                         <a
                                             onClick={() => {
-                                                if (!profileMenu) {
-                                                    setProfileMenu(true);
+                                                if (!profileMenuOpen) {
+                                                    setProfileMenuOpen(true);
                                                 }
                                             }}
                                             className={Style.userHeader}
                                         >
-                                            <p>{user.userName}</p>
+                                            <div>
+
+                                                <p>{user.userName}</p>
+                                                {profileMenuOpen ? <p className={Style.headerSm}>profile</p> : <></>}
+
+                                            </div>
                                             <Avatar className={Style.avatar} />
                                             <ArrowDown className={Style.downIcon} />
                                         </a>
-                                        {profileMenu ? <>
+                                        {profileMenuOpen ? <>
+
                                             <ul className={Style.profileMenuList}>
                                                 <li className={Style.profileMenuItem}>
                                                     <Link>Shopping Cart</Link>
+                                                    <Notification Number={5} />
                                                 </li>
                                                 <li className={Style.profileMenuItem}>
                                                     <Link>Purchase history</Link>
                                                 </li>
-                                                {/* <li className={Style.profileMenuItem}>
+                                                <li className={Style.profileMenuItem}>
                                                     <Link>Profile</Link>
-                                                </li> */}
+                                                </li>
                                                 <li className={Style.profileMenuItem}>
                                                     <Link
                                                         className={Style.cautionText}

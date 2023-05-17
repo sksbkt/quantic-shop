@@ -4,8 +4,8 @@ import BreadCrumbs from "../components/breadCrumbs";
 import Style from './ProductPreview.module.scss';
 import useSwr from 'swr';
 import Rating from '../components/products/Rating';
-import { ReactComponent as Heart } from '../../../public/Heart.svg';
-import { ReactComponent as Cart } from '../../../public/Cart.svg';
+import { ReactComponent as Heart } from '../../public/Heart.svg';
+import { ReactComponent as Cart } from '../../public/Cart.svg';
 
 import { productsEndpoint as cacheKey, getSingleProduct } from '../../api/ProductsApi';
 
