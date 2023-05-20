@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import OutsideAlerter from "../../hooks/useOutSideAlerter";
-import { ReactComponent as ArrowUpIcon } from '../../public/arrow-up-long-solid.svg'
-import { ReactComponent as ArrowDownIcon } from '../../public/arrow-down-long-solid.svg'
-import { ReactComponent as FilterIcon } from '../../public/filter-solid.svg'
+import OutsideAlerter from "../../../hooks/useOutSideAlerter";
+import { ReactComponent as ArrowUpIcon } from '../../../public/arrow-up-long-solid.svg'
+import { ReactComponent as ArrowDownIcon } from '../../../public/arrow-down-long-solid.svg'
+import { ReactComponent as FilterIcon } from '../../../public/filter-solid.svg'
 
 
 import Style from "./ProductsComponents.module.scss"
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter, selectFilter } from "../../Redux/Slices/FilterSlice";
+import { setFilter, selectFilter } from "../../../Redux/Slices/FilterSlice";
 
 
 

@@ -114,7 +114,7 @@ function Header() {
                                             <ul className={Style.profileMenuList}>
                                                 <li className={Style.profileMenuItem}>
                                                     <Link>Shopping Cart</Link>
-                                                    <Notification Number={5} />
+                                                    {/* <Notification Number={5} /> */}
                                                 </li>
                                                 <li className={Style.profileMenuItem}>
                                                     <Link>Purchase history</Link>

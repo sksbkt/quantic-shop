@@ -9,8 +9,15 @@ import { ReactComponent as Cart } from '../../public/Cart.svg';
 
 import { productsEndpoint as cacheKey, getSingleProduct } from '../../api/ProductsApi';
 
+import { useDispatch } from "react-redux";
+import { addToCard, removeFromCard } from '../../Redux/Slices/CardSlice';
+
 function ProductPreview() {
     const [searchParams] = useSearchParams();
+
+    const dispatch = useDispatch();
+
+
     let id = searchParams.get('id');
     const {
         isLoading,
@@ -64,10 +71,13 @@ function ProductPreview() {
                         <div className={Style.colorCircle} style={{ backgroundColor: prod.color }} title={prod.color}>
                         </div>
                     </div>
-                    <div className={Style.centerComboBtn}>
+                    <a
+                        onClick={() => dispatch(addToCard(prod.shoe_id))}
+                        className={Style.centerComboBtn}
+                    >
                         <Cart className={Style.icon} />
-                        <a>Add to cart</a>
-                    </div>
+                        <p>Add to cart</p>
+                    </a>
                     <p>{prod.size}</p>
                     <p>{prod.gender}</p>
                     <p>{prod.brand}</p>

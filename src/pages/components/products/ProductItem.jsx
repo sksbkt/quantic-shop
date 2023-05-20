@@ -1,7 +1,7 @@
 import React from "react";
 import Style from './ProductsComponents.module.scss'
-import { ReactComponent as Heart } from '../../public/Heart.svg'
-import { ReactComponent as Cart } from '../../public/Cart.svg'
+import { ReactComponent as Heart } from '../../../public/Heart.svg'
+import { ReactComponent as Cart } from '../../../public/Cart.svg'
 import { useNavigate } from "react-router-dom";
 import Rating from "./Rating";
 
