@@ -10,7 +10,7 @@ import { ReactComponent as Cart } from '../../public/Cart.svg';
 import { productsEndpoint as cacheKey, getSingleProduct } from '../../api/ProductsApi';
 
 import { useDispatch } from "react-redux";
-import { addToCard, removeFromCard } from '../../Redux/Slices/CardSlice';
+import { addToCard, removeFromCard, setCount } from '../../Redux/Slices/CardSlice';
 
 function ProductPreview() {
     const [searchParams] = useSearchParams();
@@ -48,7 +48,6 @@ function ProductPreview() {
     if (error) {
         content = <p>{error}</p>
     } else {
-        console.log(prod.shoe_id);
         content =
             <article className={Style.productInfo}>
                 <div className={Style.leftSection}>
@@ -66,13 +65,22 @@ function ProductPreview() {
                         </select>
 
                     </div>
-                    <div className={Style.comboBtn}>
-                        <a>Select Color</a>
+                    <a
+                        className={Style.comboBtn}
+                        onClick={() => {
+                        }}
+                    >
+                        <p>Select Color</p>
                         <div className={Style.colorCircle} style={{ backgroundColor: prod.color }} title={prod.color}>
                         </div>
-                    </div>
+                    </a>
                     <a
-                        onClick={() => dispatch(addToCard(prod.shoe_id))}
+                        onClick={() => {
+                            dispatch(addToCard({
+                                shoe_id: prod.shoe_id,
+                                count: 1
+                            }))
+                        }}
                         className={Style.centerComboBtn}
                     >
                         <Cart className={Style.icon} />
