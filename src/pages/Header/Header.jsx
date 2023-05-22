@@ -10,10 +10,14 @@ import { ReactComponent as Avatar } from "../../public/avatar.svg";
 import Style from './Header.module.scss'
 import OutsideAlerter from "../../hooks/useOutSideAlerter";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../Redux/Slices/UserSlice";
+import { selectCard } from "../../Redux/Slices/CardSlice";
+
 import useInput from "../../hooks/useInput";
 import Notification from "../components/notification/notifications";
+import Notifications from "../components/notification/notifications";
 
 function Header() {
     const [navMenu, setNavMenu] = useState(false);
@@ -24,9 +28,12 @@ function Header() {
     const location = useLocation();
 
     const user = useSelector(selectUser);
+    const card = useSelector(selectCard);
     const dispatch = useDispatch();
 
     const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
+
+
 
     return <div className={Style.headerContainer}>
         <div className={Style.content}>
@@ -83,6 +90,10 @@ function Header() {
                         : <>
                             <a className={Style.iconBtnTransparent}>
                                 <Cart className={Style.iconBtnTransparent} />
+                                {
+                                    card.totalCount > 0 ?
+                                        <Notifications Number={card.totalCount} /> : <></>
+                                }
                             </a>
                             <div className={Style.profileMenuContainer}>
                                 <OutsideAlerter onClickOutSide={() => {
@@ -114,7 +125,7 @@ function Header() {
                                             <ul className={Style.profileMenuList}>
                                                 <li className={Style.profileMenuItem}>
                                                     <Link>Shopping Cart</Link>
-                                                    {/* <Notification Number={5} /> */}
+                                                    <Notification Number={5} />
                                                 </li>
                                                 <li className={Style.profileMenuItem}>
                                                     <Link>Purchase history</Link>

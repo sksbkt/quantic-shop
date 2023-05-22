@@ -4,6 +4,8 @@ import { ReactComponent as Heart } from '../../../public/Heart.svg'
 import { ReactComponent as Cart } from '../../../public/Cart.svg'
 import { useNavigate } from "react-router-dom";
 import Rating from "./Rating";
+import { useDispatch } from "react-redux";
+import { addToCard } from "../../../Redux/Slices/CardSlice";
 
 // import useSwr from 'swr';
 function ProductItem({ product = {
@@ -11,11 +13,12 @@ function ProductItem({ product = {
     model: "sss",
     price: "999"
 }, skeletonLoad }) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     return <>
-        <article className={`${Style.item} + ${skeletonLoad ? Style.skeletonItem : ''}`} onClick={() => navigate(`/ProductPreview?id=${product.shoe_id}`)}>
+        <article className={`${Style.item} + ${skeletonLoad ? Style.skeletonItem : ''}`} >
             <section className={Style.itemUpperSlice}>
-                <img src={product.img} />
+                <img src={product.img} onClick={() => navigate(`/ProductPreview?id=${product.shoe_id}`)} />
                 <Heart className={Style.heartIcon} />
                 {/* <FontAwesomeIcon className={Style.heartIcon} icon={faHeart} /> */}
             </section>
@@ -26,7 +29,18 @@ function ProductItem({ product = {
                 </div>
                 {!skeletonLoad ? <div className={Style.itemRow}>
                     <p className={product.availability ? Style.white : Style.black}>{product.price}</p>
-                    <Cart className={Style.itemIcon} />
+                    <a
+                        onClick={() => dispatch(addToCard(
+                            {
+                                shoe_id: product.shoe_id,
+                                price: product.price,
+                                count: 1
+                            }
+                        ))}
+                        className={Style.iconBtnTransparent}
+                    >
+                        <Cart className={Style.itemIcon} />
+                    </a>
                 </div> : <p></p>}
             </section>
         </article>
