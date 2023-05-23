@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import SvgBackground from "../../Public/SvgBackgroud";
+
 import { ReactComponent as Location } from "../../Public/location.svg";
 import { ReactComponent as Search } from "../../public/Search.svg";
-import { ReactComponent as Cart } from "../../public/Cart.svg";
+import { ReactComponent as Card } from "../../public/Card.svg";
 import { ReactComponent as Hamburger } from "../../public/Hamburger.svg";
 import { ReactComponent as ArrowDown } from "../../public/arrow-down-rounded.svg";
 import { ReactComponent as Avatar } from "../../public/avatar.svg";
@@ -28,7 +29,7 @@ function Header() {
     const location = useLocation();
 
     const user = useSelector(selectUser);
-    const card = useSelector(selectCard);
+    const shoppingCard = useSelector(selectCard);
     const dispatch = useDispatch();
 
     const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
@@ -88,13 +89,15 @@ function Header() {
                         >Sign in</Link>
                     </>
                         : <>
-                            <a className={Style.iconBtnTransparent}>
-                                <Cart className={Style.iconBtnTransparent} />
+                            <Link
+                                to='/profile/shoppingcard'
+                                className={Style.iconBtnTransparent}>
+                                <Card className={Style.iconBtnTransparent} />
                                 {
-                                    card.totalCount > 0 ?
-                                        <Notifications Number={card.totalCount} /> : <></>
+                                    shoppingCard.totalCount > 0 ?
+                                        <Notifications Number={shoppingCard.totalCount} /> : <></>
                                 }
-                            </a>
+                            </Link>
                             <div className={Style.profileMenuContainer}>
                                 <OutsideAlerter onClickOutSide={() => {
                                     setProfileMenuOpen(false);
@@ -124,8 +127,11 @@ function Header() {
 
                                             <ul className={Style.profileMenuList}>
                                                 <li className={Style.profileMenuItem}>
-                                                    <Link>Shopping Cart</Link>
-                                                    <Notification Number={5} />
+                                                    <Link to={'/profile/shoppingcard'} >Shopping Card
+                                                        {shoppingCard.totalCount > 0 ?
+                                                            <Notification Number={shoppingCard.totalCount} />
+                                                            : <></>}
+                                                    </Link>
                                                 </li>
                                                 <li className={Style.profileMenuItem}>
                                                     <Link>Purchase history</Link>

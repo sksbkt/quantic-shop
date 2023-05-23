@@ -1,7 +1,7 @@
 import React from "react";
 import Style from './ProductsComponents.module.scss'
 import { ReactComponent as Heart } from '../../../public/Heart.svg'
-import { ReactComponent as Cart } from '../../../public/Cart.svg'
+import { ReactComponent as Card } from '../../../public/Card.svg'
 import { useNavigate } from "react-router-dom";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ function ProductItem({ product = {
     img: "",
     model: "sss",
     price: "999"
-}, skeletonLoad }) {
+}, skeletonLoad, count }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     return <>
@@ -39,7 +39,7 @@ function ProductItem({ product = {
                         ))}
                         className={Style.iconBtnTransparent}
                     >
-                        <Cart className={Style.itemIcon} />
+                        <Card className={Style.itemIcon} />
                     </a>
                 </div> : <p></p>}
             </section>

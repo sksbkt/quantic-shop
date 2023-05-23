@@ -19,8 +19,8 @@ const Products = lazy(() => import('./pages/Products'));
 
 const Profile = lazy(() => import('./pages/Profile'));
 const UserInformation = lazy(() => import('./pages/Profile/UserInformation'));
-const ShoppingCartHistory = lazy(() => import('./pages/Profile/ShoppingCartHistory'));
-const ShoppingCart = lazy(() => import('./pages/Profile/ShoppingCart'));
+const ShoppingCardHistory = lazy(() => import('./pages/Profile/ShoppingCardHistory'));
+const ShoppingCard = lazy(() => import('./pages/Profile/ShoppingCard'));
 
 const NotFound = lazy(() => import('./pages/NotFound'))
 function App() {
@@ -54,8 +54,8 @@ function App() {
         <Route path="ProductPreview" element={
           <ProductPreview />
         } />
-        <Route path="ShoppingCart/:id" element={
-          <ShoppingCart />
+        <Route path="ShoppingCard/:id" element={
+          <ShoppingCard />
         } />
 
         <Route path="register" element={
@@ -67,8 +67,8 @@ function App() {
             <Login />
           } /> */}
           <Route index element={<UserInformation />} />
-          <Route path="ShoppingCart/:id" element={<ShoppingCart />} />
-          <Route path="ShoppingCartHistory/:page?" element={<ShoppingCartHistory />} />
+          <Route path="ShoppingCard" element={<ShoppingCard />} />
+          <Route path="ShoppingCardHistory/:page?" element={<ShoppingCardHistory />} />
         </Route>
         {/* 404 */}
         <Route path="*" element={

@@ -5,7 +5,7 @@ import Style from './ProductPreview.module.scss';
 import useSwr from 'swr';
 import Rating from '../components/products/Rating';
 import { ReactComponent as Heart } from '../../public/Heart.svg';
-import { ReactComponent as Cart } from '../../public/Cart.svg';
+import { ReactComponent as Card } from '../../public/Card.svg';
 
 import { productsEndpoint as cacheKey, getSingleProduct } from '../../api/ProductsApi';
 
@@ -83,8 +83,8 @@ function ProductPreview() {
                         }}
                         className={Style.centerComboBtn}
                     >
-                        <Cart className={Style.icon} />
-                        <p>Add to cart</p>
+                        <Card className={Style.icon} />
+                        <p>Add to Card</p>
                     </a>
                     <p>{prod.size}</p>
                     <p>{prod.gender}</p>
