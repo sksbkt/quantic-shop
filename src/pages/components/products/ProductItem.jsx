@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { addToCard } from "../../../Redux/Slices/CardSlice";
+import NumberComboBox from "../inputComponents/NumberComboBox";
 
 // import useSwr from 'swr';
 function ProductItem({ product = {
@@ -29,19 +30,23 @@ function ProductItem({ product = {
                 </div>
                 {!skeletonLoad ? <div className={Style.itemRow}>
                     <p className={product.availability ? Style.white : Style.black}>{product.price}</p>
-                    <a
-                        onClick={() => dispatch(addToCard(
-                            {
-                                shoe_id: product.shoe_id,
-                                price: product.price,
-                                count: 1
-                            }
-                        ))}
-                        className={Style.iconBtnTransparent}
-                    >
-                        <Card className={Style.itemIcon} />
-                    </a>
-                </div> : <p></p>}
+                    {count > 0 ?
+                        <NumberComboBox
+                            number={count} SetNumber={(s) => console.log(s)} /> :
+                        <a
+                            onClick={() => dispatch(addToCard(
+                                {
+                                    shoe_id: product.shoe_id,
+                                    price: product.price,
+                                    count: 1
+                                }
+                            ))}
+                            className={Style.iconBtnTransparent}
+                        >
+                            <Card className={Style.itemIcon} />
+                        </a>
+                    }
+                </div> : <></>}
             </section>
         </article>
     </>

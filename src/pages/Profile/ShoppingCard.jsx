@@ -55,7 +55,11 @@ function ShoppingCard() {
                 {
                     products.data.length > 0 ? products.data.map(prod => {
                         const count = shoppingCard.card.find(item => item.shoe_id === prod.shoe_id).count;
-                        return <ProductItem key={prod.shoe_id} product={prod} count={count}>
+                        return <ProductItem
+                            key={prod.shoe_id}
+                            product={prod}
+                            count={count}
+                        >
                             {prod.shoe_id}
                             <h2>
                             </h2>

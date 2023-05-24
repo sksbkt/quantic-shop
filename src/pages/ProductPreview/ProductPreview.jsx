@@ -78,6 +78,7 @@ function ProductPreview() {
                         onClick={() => {
                             dispatch(addToCard({
                                 shoe_id: prod.shoe_id,
+                                price: prod.price,
                                 count: 1
                             }))
                         }}
