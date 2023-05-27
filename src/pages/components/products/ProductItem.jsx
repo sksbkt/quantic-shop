@@ -30,22 +30,18 @@ function ProductItem({ product = {
                 </div>
                 {!skeletonLoad ? <div className={Style.itemRow}>
                     <p className={product.availability ? Style.white : Style.black}>{product.price}</p>
-                    {count > 0 ?
-                        <NumberComboBox
-                            number={count} SetNumber={(s) => console.log(s)} /> :
-                        <a
-                            onClick={() => dispatch(addToCard(
-                                {
-                                    shoe_id: product.shoe_id,
-                                    price: product.price,
-                                    count: 1
-                                }
-                            ))}
-                            className={Style.iconBtnTransparent}
-                        >
-                            <Card className={Style.itemIcon} />
-                        </a>
-                    }
+                    <a
+                        onClick={() => dispatch(addToCard(
+                            {
+                                shoe_id: product.shoe_id,
+                                price: product.price,
+                                count: 1
+                            }
+                        ))}
+                        className={Style.iconBtnTransparent}
+                    >
+                        <Card className={Style.itemIcon} />
+                    </a>
                 </div> : <></>}
             </section>
         </article>

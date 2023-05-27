@@ -12,14 +12,14 @@ function NumberComboBox({ number, SetNumber }) {
         };
     }, [inputNumber]);
 
-    return <div>
-        <a className={Style.btnSm}
-            onClick={() => setInputNumber(prev => prev + 1)}
-        >+</a>
-        <p>{inputNumber}</p>
-        <a className={Style.btnSm}
+    return <div className={Style.NumberComboBoxContainer}>
+        <a className={Style.decreaseBtn}
             onClick={() => setInputNumber(prev => prev - 1)}
         >-</a>
+        <p className={Style.value}>{inputNumber}</p>
+        <a className={Style.increaseBtn}
+            onClick={() => setInputNumber(prev => prev + 1)}
+        >+</a>
     </div>;
 }
 

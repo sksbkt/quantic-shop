@@ -10,6 +10,7 @@ import { productsEndpoint as cacheKey } from '../../api/ProductsApi'
 import { getProducts } from "../../api/ProductsApi";
 import ProductItem from "../components/products/ProductItem";
 import BreadCrumbs from "../components/breadCrumbs/BreadCrumbs";
+import ShoppingCardItem from "../components/shoppingCard/ShoppingCardItem";
 
 function ShoppingCard() {
     const shoppingCard = useSelector(selectCard);
@@ -55,15 +56,11 @@ function ShoppingCard() {
                 {
                     products.data.length > 0 ? products.data.map(prod => {
                         const count = shoppingCard.card.find(item => item.shoe_id === prod.shoe_id).count;
-                        return <ProductItem
-                            key={prod.shoe_id}
-                            product={prod}
-                            count={count}
-                        >
-                            {prod.shoe_id}
-                            <h2>
-                            </h2>
-                        </ProductItem>
+                        return <>
+                            <ShoppingCardItem
+                                product={prod}
+                                count={count} />
+                        </>
                     })
                         : <></>
                 }
