@@ -11,6 +11,10 @@
 
 
 .shoppingCardInfoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
     background-color: #e9e9e9;
     border: 1px solid #cfcfcf;
     border-radius: 5px;
@@ -62,4 +66,23 @@
         width: 300px;
     }
 
+}
+
+//?---------------------------------------------------------
+// ? Responsive
+//?---------------------------------------------------------
+
+.buyOutBtn {
+    @include btn;
+    color: #fcfcfc;
+    background-color: #44005B;
+    border-radius: 10px;
+    padding: -19px;
+    width: 90%;
+}
+
+.buyOutBtn:hover {
+    color: #44005B;
+    background-color: #fcfcfc;
+    border: 1px solid;
 }

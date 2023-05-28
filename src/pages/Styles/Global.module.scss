@@ -1,3 +1,6 @@
+@import './Mixins.module.scss';
+
+
 a {
     cursor: pointer;
     text-decoration: none;
@@ -41,16 +44,7 @@ $rating-color-light: #e0d74d;
 .btn,
 .btnSm,
 .btnMd {
-    background-color: #E2E2E2;
-    color: #383838;
-    border: solid 1px #acacac;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    cursor: pointer;
-    transition: .2s all;
-    min-height: 40px;
+    @include btn;
 
     p {
         color: #383838;
@@ -329,27 +323,6 @@ $rating-color-light: #e0d74d;
 }
 
 //?---------------------------------------------------------
-// ? mixins
-//?---------------------------------------------------------
-@mixin a-styling {
-
-    a,
-    a:hover {
-        text-decoration: none;
-        color: unset;
-        transition: all 0.2s;
-        color: #383838;
-    }
-
-    a:hover {
-        color: #adadad;
-
-        // -webkit-text-stroke: 1px #383838;
-        // text-shadow: 0 0 2px #383838;
-    }
-}
-
-//?---------------------------------------------------------
 // ? TEXT
 //?---------------------------------------------------------
 .cautionText {
@@ -388,3 +361,7 @@ $rating-color-light: #e0d74d;
 .descriptionText {}
 
 .inputText {}
+
+.flexFill {
+    flex: 10;
+}

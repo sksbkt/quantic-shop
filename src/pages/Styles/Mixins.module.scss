@@ -1,0 +1,36 @@
+//?---------------------------------------------------------
+// ? mixins
+//?---------------------------------------------------------
+@mixin a-styling {
+
+    a,
+    a:hover {
+        text-decoration: none;
+        color: unset;
+        transition: all 0.2s;
+        color: #383838;
+    }
+
+    a:hover {
+        color: #adadad;
+
+        // -webkit-text-stroke: 1px #383838;
+        // text-shadow: 0 0 2px #383838;
+    }
+}
+
+
+
+@mixin btn {
+    background-color: #E2E2E2;
+    color: #383838;
+    border: solid 1px #acacac;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    cursor: pointer;
+    transition: .2s all;
+    min-height: 40px;
+
+}

@@ -82,8 +82,10 @@ function ShoppingCard() {
             <div className={Style.shoppingCardInfoSection}>
                 <div className={Style.textGrid}>
                     <p className={Style.labelText}>Total price:</p><p className={Style.descriptionText}>{shoppingCard.totalPrice}</p>
-                </div>
-
+                </div><div className={Style.flexFill}></div>
+                <a className={Style.buyOutBtn}>
+                    Buy
+                </a>
             </div>
         </article>
     </>
