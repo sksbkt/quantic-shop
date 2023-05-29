@@ -12,7 +12,7 @@ export function useDynamicSvgImport(iconName) {
         const importSvgIcon = async () => {
             try {
                 importedIconRef.current =
-                    (await import(`../../public/${iconName}.svg`))
+                    (await import(`/public/${iconName}.svg`))
                         .ReactComponent;
             } catch (e) { }
         }

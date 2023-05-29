@@ -1,11 +1,11 @@
 @import '../../Products/Products.module.scss';
 
-.white {
-    color: white;
+.available {
+    color: #1f1f1f;
 }
 
-.black {
-    color: black;
+.unavailable {
+    color: #cecece;
 }
 
 .ratingContainer {

@@ -1,6 +1,6 @@
 import React from "react";
-import { ReactComponent as Star } from "../../../public/Star_filled.svg";
-import { ReactComponent as StarEmpty } from "../../../public/Star_empty.svg";
+import { ReactComponent as Star } from "/Public/Star_filled.svg";
+import { ReactComponent as StarEmpty } from "/Public/Star_empty.svg";
 import Style from './ProductsComponents.module.scss'
 
 function Rating({ rating, preview }) {

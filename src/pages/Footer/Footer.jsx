@@ -1,13 +1,13 @@
 import React from "react";
 import Style from './Footer.module.scss';
-import { ReactComponent as Fcb } from '../../Public/fcb.svg'
-import { ReactComponent as Mlb } from '../../Public/MLB.svg'
-import { ReactComponent as Nba } from '../../Public/NBA.svg'
-import { ReactComponent as Nfl } from '../../Public/NFL.svg'
-import { ReactComponent as T1 } from '../../Public/T1.svg'
+import { ReactComponent as Fcb } from '/Public/fcb.svg'
+import { ReactComponent as Mlb } from '/Public/MLB.svg'
+import { ReactComponent as Nba } from '/Public/NBA.svg'
+import { ReactComponent as Nfl } from '/Public/NFL.svg'
+import { ReactComponent as T1 } from '/Public/T1.svg'
 
-import { ReactComponent as Nike } from '../../Public/nike.svg'
-import { ReactComponent as Location } from "../../Public/location.svg";
+import { ReactComponent as Nike } from '/Public/nike.svg'
+import { ReactComponent as Location } from "/Public/location.svg";
 
 
 function Footer() {
@@ -24,7 +24,7 @@ function Footer() {
             <div className={Style.titlesListContainer}>
 
                 <ul>
-                    <th>Sports</th>
+                    <li>Sports</li>
                     <li>Football</li>
                     <li>Baseball</li>
                     <li>Basketball</li>
@@ -32,14 +32,14 @@ function Footer() {
                     <li>Motor sports</li>
                 </ul>
                 <ul>
-                    <th>Everyday</th>
+                    <li>Everyday</li>
                     <li>Running</li>
                     <li>Sneakers</li>
                     <li>Allstars</li>
                     <li>Fashion</li>
                 </ul>
                 <ul>
-                    <th>Kids</th>
+                    <li>Kids</li>
                     <li>Slippers</li>
                     <li>Playground</li>
                 </ul>
