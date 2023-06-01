@@ -12,7 +12,7 @@ import ProductItem from "./ProductItem";
 import Filter from "./Filter";
 import { selectFilter, setFilter } from "../../../Redux/Slices/FilterSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { userSearchParamsParser, validateSearchParams } from "../../../Helper/SearchParamsParser";
+import { isValidSearchParam, userSearchParamsParser, validateSearchParams } from "../../../Helper/SearchParamsParser";
 import Pagination from "./Pagination";
 
 function ProductsList() {
@@ -35,20 +35,29 @@ function ProductsList() {
     const search = userSearchParamsParser(filter) + `_start=${start}&_limit=${itemPerPage}`;
 
     useEffect(() => {
-        dispatch(setFilter(validateSearchParams(searchParams)));
+        console.log(isValidSearchParam(searchParams));
+        if (!isValidSearchParam(searchParams)) {
+            dispatch(setFilter(validateSearchParams(searchParams)));
+            navigate(`/products/${paginationPage}?${search}`);
+        }
         return () => {
         };
     }, []);
 
-    // const search = useSelector(selectSearch);
-    useEffect(() => {
+    function updateNavigation() {
         navigate(`/products/${paginationPage}?${search}`);
-        mutate()
-    }, [filter, paginationPage]);
+        mutate();
+    }
+    // const search = useSelector(selectSearch);
+    // useEffect(() => {
+    //     console.log('RUN');
+    //     navigate(`/products/${paginationPage}?${search}`);
+    //     mutate();
+    // }, [paginationPage]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [numberOfItems]);
+    // }, [filter, numberOfItems]);
 
     //? SWR
     const {
@@ -67,11 +76,8 @@ function ProductsList() {
 
         {
             onSuccess: res => {
-                setNumberOfItems(
-                    res.headers["x-total-count"]
-
-                )
-
+                setNumberOfItems(res.headers["x-total-count"]);
+                console.log(res.headers["x-total-count"]);
                 return res.data
             },
             revalidateOnFocus: false,
@@ -90,6 +96,7 @@ function ProductsList() {
             content = <p>{error}</p>
         }
         else {
+            console.log(numberOfItems);
             content = (
                 <>
                     <div className={Style.productContainer}>
@@ -102,8 +109,11 @@ function ProductsList() {
                         <Pagination
                             paginationPage={(pageNumber) => setPaginationPage(pageNumber)}
                             paginationPageLimit={16}
-                            paginationNumberOfItems={numberOfItems}
                             paginationSelectedPage={page ?? 1}
+                            paginationNumberOfItems={numberOfItems}
+                            onActivePageChange={(s) => {
+                                updateNavigation();
+                            }}
                         />
                     </div>
                 </>

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { addToCard } from "../../../Redux/Slices/CardSlice";
-import NumberComboBox from "../inputComponents/NumberComboBox";
+// import NumberComboBox from "../inputComponents/NumberComboBox";
 import { getRandomNumberInRange } from "../../../Helper/HelperFunctions";
 
 // import useSwr from 'swr';
@@ -17,17 +17,19 @@ function ProductItem({ product = {
 }, skeletonLoad, count }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const imagePath = `../../../../public/shoe_1.png`;
+    // const imagePath = `/public/shoe_1.png`;
     return <>
         <article className={`${Style.item} + ${skeletonLoad ? Style.skeletonItem : ''}`} >
             <section className={Style.itemUpperSlice}>
                 {/* //? apparently there is a bug with img as flex item so we need this div to fix the issue  */}
-                <div></div>
-                <div>
+                <div className={Style.gradientCover}
+                    onClick={() => navigate(`/ProductPreview?id=${product.shoe_id}`)}
+                />
+                <div className={Style.imgContainer}>
                     <img
-                        src={`../../../../public/shoe_${getRandomNumberInRange(1, 4)}.png`}
-                        //  src={product.img}
-                        onClick={() => navigate(`/ ProductPreview ? id = ${product.shoe_id}`)} />
+                        src={`/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
+                    //  src={product.img}
+                    />
                 </div>
                 <Heart className={Style.heartIcon} />
                 {/* <FontAwesomeIcon className={Style.heartIcon} icon={faHeart} /> */}

@@ -19,6 +19,7 @@ import { selectCard } from "../../Redux/Slices/CardSlice";
 import useInput from "../../hooks/useInput";
 import Notification from "../components/notification/notifications";
 import Notifications from "../components/notification/notifications";
+import LinkCustom from "../../class/LinkCustom";
 
 function Header() {
     const [navMenu, setNavMenu] = useState(false);
@@ -27,7 +28,7 @@ function Header() {
     const profileMenuButton = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
-
+    console.log(location.pathname);
     const user = useSelector(selectUser);
     const shoppingCard = useSelector(selectCard);
     const dispatch = useDispatch();
@@ -35,8 +36,9 @@ function Header() {
     const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
 
 
-
-    return <div className={Style.headerContainer}>
+    return <div
+        className={Style.headerContainer}
+    >
         <div className={Style.content}>
             <OutsideAlerter onClickOutSide={() => setNavMenu(false)} excludeRef={hamburgerButton}>
                 <div className={`${Style.hamburgerMenu} ${navMenu ? Style.hamburgerMenuVisible : Style.hamburgerMenuInvisible}`}>
@@ -69,10 +71,19 @@ function Header() {
                 </div>
 
                 <div className={Style.navigation}>
-                    <Link to={'./'}>Home</Link>
-                    <Link to={'./products'}>Products</Link>
-                    <a>Blog</a>
-                    <a>Features</a>
+                    <LinkCustom
+                        to={'/'}
+                        location={location.pathname}
+                    >Home</LinkCustom>
+                    <LinkCustom
+                        to={'/products'}
+                        location={location.pathname}
+                    >Products</LinkCustom>
+                    <a about="">Blog</a>
+                    <LinkCustom
+                        to={'/features'}
+                        location={location.pathname}
+                    >Features</LinkCustom>
                     <a>Contact</a>
                 </div>
 

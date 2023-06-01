@@ -4,8 +4,8 @@ import BreadCrumbs from "../components/breadCrumbs";
 import Style from './ProductPreview.module.scss';
 import useSwr from 'swr';
 import Rating from '../components/products/Rating';
-import { ReactComponent as Heart } from '../public/Heart.svg';
-import { ReactComponent as Card } from '../public/Card.svg';
+import { ReactComponent as Heart } from '/public/Heart.svg';
+import { ReactComponent as Card } from '/public/Card.svg';
 
 import { productsEndpoint as cacheKey, getSingleProduct } from '../../api/ProductsApi';
 
@@ -49,52 +49,55 @@ function ProductPreview() {
         content = <p>{error}</p>
     } else {
         content =
-            <article className={Style.productInfo}>
-                <div className={Style.leftSection}>
-                    <img src={prod.img} />
-                </div>
-                <div className={Style.rightSection}>
+            <section className={Style.pageMainContainer}>
 
-                    <h2>{prod.name}</h2>
-                    <h4>{prod.price}$</h4>
-                    <p>{prod.availability ? 'available' : 'not available'}</p>
-                    <div className={Style.comboBtn}>
-                        <a>Select Size</a>
-                        <select>
-                            <option value={0}>select size</option>
-                        </select>
-
+                <article className={Style.productInfo}>
+                    <div className={Style.leftSection}>
+                        <img src={prod.img} />
                     </div>
-                    <a
-                        className={Style.comboBtn}
-                        onClick={() => {
-                        }}
-                    >
-                        <p>Select Color</p>
-                        <div className={Style.colorCircle} style={{ backgroundColor: prod.color }} title={prod.color}>
+                    <div className={Style.rightSection}>
+
+                        <h2>{prod.name}</h2>
+                        <h4>{prod.price}$</h4>
+                        <p>{prod.availability ? 'available' : 'not available'}</p>
+                        <div className={Style.comboBtn}>
+                            <a>Select Size</a>
+                            <select>
+                                <option value={0}>select size</option>
+                            </select>
+
                         </div>
-                    </a>
-                    <a
-                        onClick={() => {
-                            dispatch(addToCard({
-                                shoe_id: prod.shoe_id,
-                                price: prod.price,
-                                count: 1
-                            }))
-                        }}
-                        className={Style.centerComboBtn}
-                    >
-                        <Card className={Style.icon} />
-                        <p>Add to Card</p>
-                    </a>
-                    <p>{prod.size}</p>
-                    <p>{prod.gender}</p>
-                    <p>{prod.brand}</p>
-                    <p>{prod.description}</p>
-                    <p>Review:</p>
-                    <Rating rating={prod.rating} preview={true} />
-                </div>
-            </article >
+                        <a
+                            className={Style.comboBtn}
+                            onClick={() => {
+                            }}
+                        >
+                            <p>Select Color</p>
+                            <div className={Style.colorCircle} style={{ backgroundColor: prod.color }} title={prod.color}>
+                            </div>
+                        </a>
+                        <a
+                            onClick={() => {
+                                dispatch(addToCard({
+                                    shoe_id: prod.shoe_id,
+                                    price: prod.price,
+                                    count: 1
+                                }))
+                            }}
+                            className={Style.centerComboBtn}
+                        >
+                            <Card className={Style.icon} />
+                            <p>Add to Card</p>
+                        </a>
+                        <p>{prod.size}</p>
+                        <p>{prod.gender}</p>
+                        <p>{prod.brand}</p>
+                        <p>{prod.description}</p>
+                        <p>Review:</p>
+                        <Rating rating={prod.rating} preview={true} />
+                    </div>
+                </article >
+            </section>
     }
     return <section className={Style.mainSection} >
         <BreadCrumbs prod={prod} />

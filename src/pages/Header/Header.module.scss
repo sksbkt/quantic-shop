@@ -1,4 +1,4 @@
-@import '../Styles/Global.module.scss';
+@import '/src/Styles/Global.module.scss';
 
 .logo {
     position: relative;
@@ -264,11 +264,14 @@
     width: 200px;
     overflow: hidden;
     border: 1px solid #acacac;
+    z-index: 9999;
 
     a {
         padding: 5px 10px;
     }
 }
+
+.profileMenuVisible>a {}
 
 .profileMenuList {
     list-style: none;

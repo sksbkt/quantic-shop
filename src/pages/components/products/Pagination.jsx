@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from "react";
 import style from './ProductsComponents.module.scss'
-function Pagination({ paginationPage, paginationPageLimit, paginationNumberOfItems, paginationSelectedPage }) {
+function Pagination({
+    paginationPage,
+    paginationPageLimit,
+    paginationNumberOfItems,
+    paginationSelectedPage,
+    onActivePageChange
+}) {
+
     const [page, setPage] = useState(paginationSelectedPage);
     const numberOfPages = (paginationNumberOfItems / paginationPageLimit).toFixed();
-
     const pages = [];
     for (let index = 0; index < numberOfPages; index++) {
         const value = index + 1;
         pages.push(
             value == page ?
-                <a
+                <p
                     className={style.selectPageTab}
                     key={value}
-                    onClick={() => { paginationPage(value); setPage(value) }}
-                >{value}</a> :
+                >{value}</p> :
                 <a
                     className={style.pageTab}
                     key={value}
-                    onClick={() => { paginationPage(value); setPage(value) }}
+                    onClick={() => {
+                        paginationPage(value);
+                        setPage(value);
+                        onActivePageChange();
+                    }}
                 >{value}</a>)
     }
     useEffect(() => {

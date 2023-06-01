@@ -58,7 +58,7 @@ function Login() {
     //     };
     // }, [user]);
 
-    return <>
+    return <div className={Style.pageMainContainer}>
         <BreadCrumbs />
         <form className={Style.authForm} onSubmit={(e) => handleSubmit(e)}>
             <div className={Style.formInputRow}>
@@ -94,7 +94,7 @@ function Login() {
                 >Log in</button>
             </div>
         </form>
-    </>
+    </div>
 }
 
 export default Login;

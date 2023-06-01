@@ -6,9 +6,8 @@ import Style from './Products.module.scss'
 import SkeletonProducts from "../skeletons/SkeletonProducts";
 
 function Products() {
-
     return (
-        <section className={Style.mainSection}>
+        <section className={Style.pageMainContainer}>
             <BreadCrumbs />
 
             <div className={Style.gap}></div>

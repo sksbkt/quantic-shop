@@ -1,5 +1,5 @@
-@import '../Styles/Global.module.scss';
-@import '../Styles/Animations.module.scss';
+@import '/src/Styles/Global.module.scss';
+@import '/src/Styles/Animations.module.scss';
 
 
 .item,
@@ -42,13 +42,17 @@
         align-items: center;
         position: relative;
 
-        div:first-child {
+        .imgContainer,
+        .gradientCover {
             width: 100%;
             height: 100%;
-            position: absolute;
+        }
+
+        .gradientCover {
             background: linear-gradient(180deg, rgba(0, 0, 0, 0) 64.07%, rgba(0, 0, 0, 0.15) 100%);
             z-index: 999;
         }
+
 
         div {
             width: 100%;

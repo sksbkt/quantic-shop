@@ -1,8 +1,11 @@
 import React from "react";
 
-function Home() {
-    return <div>
+import Style from "./Home.module.scss";
+import MainSlide from "../components/Home/MainSlide";
 
+function Home() {
+    return <div className={Style.mainContainer}>
+        <MainSlide />
     </div>;
 }
 

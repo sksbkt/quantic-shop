@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import useInput from './hooks/useInput';
 import { useDispatch } from 'react-redux';
 import { login } from './Redux/Slices/UserSlice';
+import Features from './pages/Features/Features';
 
 // const Login = lazy(() => import('./features/Auth/Login'));
 // const SingUp = lazy(() => import('./features/Auth/SingUp'));
@@ -56,6 +57,9 @@ function App() {
         } />
         <Route path="ShoppingCard/:id" element={
           <ShoppingCard />
+        } />
+        <Route path="Features" element={
+          <Features />
         } />
 
         <Route path="register" element={

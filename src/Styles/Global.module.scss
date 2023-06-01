@@ -15,6 +15,13 @@ $rating-color-light: #e0d74d;
 //?---------------------------------------------------------
 // ? Containers
 //?---------------------------------------------------------
+.pageMainContainer {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .mainSection {
     display: flex;
