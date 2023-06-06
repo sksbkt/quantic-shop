@@ -1,0 +1,222 @@
+@import "/src/Styles/Global.module.scss";
+
+.mainSliderContainer {
+    width: 100%;
+    height: 525px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.mainSlide {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    // justify-content: center;
+    .mainSlidePreviewContainer {
+        position: absolute;
+        width: 130px;
+        height: 50px;
+        top: 40%;
+        left: 2%;
+        display: flex;
+        flex-direction: row;
+        z-index: 1;
+
+        .mainSlidePreviewCircle {
+            border-radius: 50%;
+            height: 50px;
+            aspect-ratio: 1/1;
+            position: absolute;
+            overflow: hidden;
+            outline: 1px solid rgb(218, 218, 218);
+
+            img {
+                object-fit: cover;
+                max-height: 200%;
+                top: -50%;
+                left: -50%;
+                position: absolute;
+                aspect-ratio: 1/1;
+            }
+        }
+
+        .mainSlidePreviewCircle:nth-child(1) {
+            background-color: blue;
+            left: 0;
+
+        }
+
+        .mainSlidePreviewCircle:nth-child(2) {
+            left: 30%;
+        }
+
+        .mainSlidePreviewCircle:nth-child(3) {
+            left: 60%;
+        }
+    }
+
+    .mainSlideBrandContainer {
+        width: 100px;
+        aspect-ratio: 3/1;
+        position: absolute;
+        top: 75px;
+        display: flex;
+        align-items: center;
+
+        svg {
+            display: block;
+            max-width: 120px;
+            max-height: 100px;
+            width: auto;
+            height: auto;
+            fill: #4a4a4a;
+        }
+    }
+
+    .mainSlideBackGroundImg {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        // background-color: red;
+        position: relative;
+        height: 600px;
+        width: 100%;
+
+        div {
+            // position: absolute;
+
+        }
+
+
+        img:first-child {}
+    }
+}
+
+.slideShowContainer {
+    // height: 100%;
+    // width: 100%;
+    position: relative;
+
+}
+
+.sliderShowMovingBgContainer,
+.sliderShowMovingContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.sliderShowMovingContainer {
+    transition: all 1s ease-in-out;
+}
+
+.sliderShowMovingBgContainer {
+    transition: all 1.2s ease-in-out;
+}
+
+.imgFore,
+.imgBg {
+    // position: absolute;
+    width: 70%;
+    object-fit: cover;
+    left: 15%;
+}
+
+.imgFore {
+    position: absolute;
+}
+
+
+.sliderNavigationContainer {
+    z-index: 6;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+
+    .sliderNavigationBtnContainer {
+        position: absolute;
+        bottom: 40%;
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    a {
+        font-size: 20px;
+        font-weight: 800;
+        transition: all .3s;
+        color: #4a4a4a;
+        border: 1px solid lightgrey;
+        aspect-ratio: 1/1;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    a:hover,
+    a:active {
+        color: white;
+    }
+
+    a:hover {
+        background-color: #7e7e7e49;
+    }
+
+    a:active {
+        background-color: #4d4d4d5e;
+    }
+
+    .circlesContainer {
+        bottom: 0;
+        width: 100px;
+        height: auto;
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        gap: 2px;
+        align-items: center;
+        justify-content: center;
+
+        .circleSelected,
+        .circle {
+            transition: all 1s;
+            border: 1px solid #727272;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+
+        .circleSelected {
+            background-color: #878787;
+        }
+    }
+}
+
+.mask {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 5;
+    background-image: linear-gradient(90deg, #00000099 0px, #ffffff00 8%, #00000099 0px, #ffffff00 8%);
+    mask-image: linear-gradient(90deg, #00000099 0px, #ffffff00 8%, #00000099 0px, #ffffff00 8%);
+    -webkit-mask-image: linear-gradient(90deg, #00000099 0px, #ffffff00 8%, #00000099 0px, #ffffff00 8%);
+}
+
+@mixin gradient {
+    gradient: linear-gradient(90deg, #00000099 0px, #ffffff00 8%, #00000099 0px, #ffffff00 8%);
+}
