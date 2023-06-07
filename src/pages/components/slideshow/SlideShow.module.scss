@@ -6,7 +6,30 @@
     position: relative;
     display: flex;
     justify-content: center;
+
+    .brandNameContainer {
+        position: absolute;
+
+    }
 }
+
+.brandName,
+.modelName {
+    font-family: 'Poppins';
+    transition: .5s opacity cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.modelName {
+    font-weight: 900;
+    font-size: 28px;
+}
+
+.brandName {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
 
 .mainSlide {
     position: relative;
@@ -15,6 +38,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
 
 
     // justify-content: center;

@@ -9,35 +9,43 @@ import { ReactComponent as Jordan } from '/public/jordan.svg'
 import { getRandomNumberInRange } from "../../../Helper/HelperFunctions";
 import SlideShow from "./SlideShow";
 import SliderNavigation from "./SliderNavigation";
+import AnimateComponent from "../inputComponents/AnimateComponent";
 
 function MainSlide({ imgList }) {
     const [current, setCurrent] = useState(0);
-
-    useEffect(() => {
-
-        return () => {
-        };
-    }, []);
 
     const slides = [
         {
             bg: "/public/main_slide_bg_1.png",
             fore: "/public/main_slide_1.png",
-            brand: "nike"
+            brand: "nike",
+            name: "Jordan Air 1 MID",
         },
         {
             bg: "/public/main_slide_bg_1.png",
             fore: "/public/main_slide_2.png",
-            brand: "nike"
+            brand: "nike",
+            name: "Stun master",
         },
         {
             bg: "/public/main_slide_bg_1.png",
             fore: "/public/main_slide_2.png",
-            brand: "nike"
+            brand: "nike",
+            name: "Sprinter",
         },
     ];
 
     return <div className={Style.mainSliderContainer}>
+        <div className={Style.brandNameContainer}>
+            <AnimateComponent animationDuration={500} trigger={slides[current].name}>
+                <h3 className={Style.modelName}>
+                    {slides[current].name}
+                </h3>
+            </AnimateComponent>
+            <h4
+                className={Style.brandName}
+            >by {slides[current].brand}</h4>
+        </div>
 
         <div className={Style.mainSlide}>
             <div

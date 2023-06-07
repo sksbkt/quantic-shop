@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { selectUser } from "../../Redux/Slices/UserSlice";
 import Login from "../Auth/Login";
-
+import Style from './Profile.module.scss';
 function Profile() {
     const user = useSelector(selectUser);
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ function Profile() {
         if (location.pathname.includes('/shoppingcard')) {
             return <Outlet />
         } else {
-            return <h1>profile</h1>
+            return <Link to="/" className={Style.profileBtn}>hello</Link>
         }
     }
     return (

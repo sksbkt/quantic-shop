@@ -28,4 +28,19 @@
 .NumberComboBoxContainer {
     display: flex;
     flex-direction: row;
+    transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.invisible,
+.visible {
+    transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+
+}
+
+.visible {
+    opacity: 1;
+}
+
+.invisible {
+    opacity: 0;
 }
