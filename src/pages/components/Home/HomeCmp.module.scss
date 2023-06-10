@@ -1,0 +1,13 @@
+@import '/src/Styles/Global.module.scss';
+
+//? ///////////////////////////////////////////////////////////////////////
+//? PARALLAX
+//? ///////////////////////////////////////////////////////////////////////
+.parallaxWdw {
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

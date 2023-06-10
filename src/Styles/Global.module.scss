@@ -372,3 +372,33 @@ $rating-color-light: #e0d74d;
 .flexFill {
     flex: 10;
 }
+
+.transition4 {
+    transition: all .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.partiallyVisible {
+    opacity: .5;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.unsaturated {
+    filter: saturate(.3) brightness(.7);
+
+}
+
+.partiallyUnsaturated {
+    filter: saturate(.6) brightness(.8);
+
+}
+
+.saturated {
+    filter: saturate(1) brightness(1);
+}

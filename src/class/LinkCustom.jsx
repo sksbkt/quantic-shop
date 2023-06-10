@@ -27,8 +27,12 @@ class LinkCustom extends React.Component {
         );
     }
 }
-LinkCustom.propTypes = { ssss: PropTypes.string };
+LinkCustom.propTypes = {
+    to: PropTypes.string,
+    location: PropTypes.string,
+};
 export default LinkCustom;
+
 
 
 

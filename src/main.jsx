@@ -5,15 +5,18 @@ import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './Redux/Store'
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/*' element={<App />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <ParallaxProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/*' element={<App />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </ParallaxProvider>
   </React.StrictMode>,
 )
