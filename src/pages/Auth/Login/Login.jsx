@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BreadCrumbs from "../../components/breadCrumbs/BreadCrumbs";
-import Style from '../Auth.module.scss'
+import Style from '../Auth.module.scss';
 
-import { ReactComponent as Reset } from '/Public/Reset.svg'
+import { ReactComponent as Reset } from '/public/Reset.svg';
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../../Redux/Slices/UserSlice";
 import { useLocation, useNavigate } from "react-router-dom";

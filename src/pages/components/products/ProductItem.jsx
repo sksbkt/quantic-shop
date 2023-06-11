@@ -1,7 +1,7 @@
 import React from "react";
 import Style from './ProductsComponents.module.scss'
-import { ReactComponent as Heart } from '/Public/Heart.svg'
-import { ReactComponent as Card } from '/Public/Card.svg'
+import { ReactComponent as Heart } from '/public/Heart.svg'
+import { ReactComponent as Card } from '/public/Card.svg'
 import { useNavigate } from "react-router-dom";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Style from "./SlideShow.module.scss";
 
 import { ReactComponent as Nike } from '/public/nike.svg'
-import { ReactComponent as Jordan } from '/public/jordan.svg'
+import { ReactComponent as Jordan } from '/public/Jordan.svg'
 
 
 import { getRandomNumberInRange } from "../../../Helper/HelperFunctions";

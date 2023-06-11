@@ -44,7 +44,7 @@ function App() {
 
     <Routes>
       <Route path='/' element={<Layout />}>
-        {/* Public Routes */}
+        {/* public Routes */}
         <Route index element={<Home />} />
         <Route path="login" element={
           <Login />

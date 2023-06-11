@@ -610,7 +610,7 @@
     },
     {
       "shoe_id": "bdcb8e87-9c08-4c71-8c23-0869b5a6415a",
-      "name": "Publicité",
+      "name": "publicité",
       "brand": "Janyx",
       "model": "Distributed explicit hardware",
       "color": "Purple",
@@ -994,7 +994,7 @@
     },
     {
       "shoe_id": "1989086a-bd39-4081-b12f-10933dcd79fc",
-      "name": "Publicité",
+      "name": "publicité",
       "brand": "Meevee",
       "model": "Multi-lateral needs-based parallelism",
       "color": "Teal",
@@ -1012,7 +1012,7 @@
       "shoe_id": "3c93d64c-5128-4f96-b279-4463dbf2c058",
       "name": "Garçon",
       "brand": "Thoughtworks",
-      "model": "Public-key tangible architecture",
+      "model": "public-key tangible architecture",
       "color": "Orange",
       "size": 11,
       "price": 4430.24,

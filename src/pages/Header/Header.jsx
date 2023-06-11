@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import SvgBackground from "/Public/SvgBackgroud";
-import { ReactComponent as Location } from "/Public/location.svg";
+import SvgBackground from "/public/SvgBackgroud";
+import { ReactComponent as Location } from "/public/location.svg";
 import { ReactComponent as Search } from "/public/Search.svg";
 import { ReactComponent as Card } from "/public/Card.svg";
 import { ReactComponent as Hamburger } from "/public/Hamburger.svg";
