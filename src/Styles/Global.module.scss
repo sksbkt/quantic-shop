@@ -402,3 +402,7 @@ $rating-color-light: #e0d74d;
 .saturated {
     filter: saturate(1) brightness(1);
 }
+
+.blurry {
+    filter: blur(3px);
+}
