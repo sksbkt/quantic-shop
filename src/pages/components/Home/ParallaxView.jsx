@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Parallax, useParallax } from "react-scroll-parallax";
 import Style from './HomeCmp.module.scss';
-function ParallaxView(props) {
-    const { ref: parent } = useParallax({ speed: props.parentSpeed ?? 0 });
-    const { ref: child } = useParallax({ speed: props.speed ? props.speed * -1 : -20 });
+function ParallaxView(props, { height, parentSpeed, speed }) {
+    const { ref: parent } = useParallax({ speed: parentSpeed ?? 0 });
+    const { ref: child } = useParallax({ speed: speed ? speed * -1 : -20 });
     const [visible, setVisible] = useState(false);
 
     return (
@@ -16,7 +16,7 @@ function ParallaxView(props) {
             style={{ width: '100%' }}
         >
             <div
-                style={{ height: props.height }}
+                style={{ height: height }}
                 ref={parent}
                 className={`
                 ${Style.parallaxWdw} 
