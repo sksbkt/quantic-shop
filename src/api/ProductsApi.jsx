@@ -1,5 +1,6 @@
 import axios from 'axios'
-const productsApi = axios.create({ baseURL: 'http://localhost:3500' });
+// const productsApi = axios.create({ baseURL: 'http://localhost:3500' });
+const productsApi = axios.create({ baseURL: 'https://typhoon-carnation-kettle.glitch.me' });
 
 export let productsEndpoint = '/products';
 
