@@ -12,9 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ParallaxProvider>
       <Provider store={store}>
         <BrowserRouter>
-          <Routes>
-            <Route path='/*' element={<App />} />
-          </Routes>
+          <App />
         </BrowserRouter>
       </Provider>
     </ParallaxProvider>

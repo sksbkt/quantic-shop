@@ -1,7 +1,7 @@
 import React from "react";
 import Style from './ProductsComponents.module.scss'
-import { ReactComponent as Heart } from '/public/Heart.svg'
-import { ReactComponent as Card } from '/public/Card.svg'
+import { ReactComponent as Heart } from '/src/public/Heart.svg'
+import { ReactComponent as Card } from '/src/public/Card.svg'
 import { useNavigate } from "react-router-dom";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
@@ -17,7 +17,7 @@ function ProductItem({ product = {
 }, skeletonLoad, count }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const imagePath = `/public/shoe_1.png`;
+    // const imagePath = `/src/public/shoe_1.png`;
     return <>
         <article className={`${Style.item} + ${skeletonLoad ? Style.skeletonItem : ''}`} >
             <section className={Style.itemUpperSlice}>
@@ -27,7 +27,7 @@ function ProductItem({ product = {
                 />
                 <div className={Style.imgContainer}>
                     <img
-                        src={`/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
+                        src={`/src/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
                     //  src={product.img}
                     />
                 </div>

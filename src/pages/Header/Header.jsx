@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import SvgBackground from "/public/SvgBackgroud";
-import { ReactComponent as Location } from "/public/location.svg";
-import { ReactComponent as Search } from "/public/Search.svg";
-import { ReactComponent as Card } from "/public/Card.svg";
-import { ReactComponent as Hamburger } from "/public/Hamburger.svg";
-import { ReactComponent as ArrowDown } from "/public/arrow-down-rounded.svg";
-import { ReactComponent as Avatar } from "/public/avatar.svg";
+import SvgBackground from "/src/public/SvgBackgroud";
+import { ReactComponent as Location } from "/src/public/location.svg";
+import { ReactComponent as Search } from "/src/public/Search.svg";
+import { ReactComponent as Card } from "/src/public/Card.svg";
+import { ReactComponent as Hamburger } from "/src/public/Hamburger.svg";
+import { ReactComponent as ArrowDown } from "/src/public/arrow-down-rounded.svg";
+import { ReactComponent as Avatar } from "/src/public/avatar.svg";
 
 import Style from './Header.module.scss'
 import OutsideAlerter from "../../hooks/useOutSideAlerter";

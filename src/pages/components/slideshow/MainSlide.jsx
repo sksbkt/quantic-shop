@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import Style from "./SlideShow.module.scss";
 
-import { ReactComponent as Nike } from '/public/nike.svg'
-import { ReactComponent as Jordan } from '/public/Jordan.svg'
+import { ReactComponent as Nike } from '/src/public/nike.svg'
+import { ReactComponent as Jordan } from '/src/public/Jordan.svg'
 
 
 import { getRandomNumberInRange } from "../../../Helper/HelperFunctions";
@@ -16,20 +16,20 @@ function MainSlide({ imgList }) {
 
     const slides = [
         {
-            bg: "/public/main_slide_bg_1.png",
-            fore: "/public/main_slide_1.png",
+            bg: "/src/public/main_slide_bg_1.png",
+            fore: "/src/public/main_slide_1.png",
             brand: "nike",
             name: "Jordan Air 1 MID",
         },
         {
-            bg: "/public/main_slide_bg_1.png",
-            fore: "/public/main_slide_2.png",
+            bg: "/src/public/main_slide_bg_1.png",
+            fore: "/src/public/main_slide_2.png",
             brand: "nike",
             name: "Stun master",
         },
         {
-            bg: "/public/main_slide_bg_1.png",
-            fore: "/public/main_slide_2.png",
+            bg: "/src/public/main_slide_bg_1.png",
+            fore: "/src/public/main_slide_2.png",
             brand: "nike",
             name: "Sprinter",
         },
@@ -61,21 +61,21 @@ function MainSlide({ imgList }) {
                     className={Style.mainSlidePreviewCircle}
                 >
                     <img
-                        src={`/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
+                        src={`/src/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
                     />
                 </a>
                 <a
                     className={Style.mainSlidePreviewCircle}
                 >
                     <img
-                        src={`/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
+                        src={`/src/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
                     />
                 </a>
                 <a
                     className={Style.mainSlidePreviewCircle}
                 >
                     <img
-                        src={`/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
+                        src={`/src/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
                     />
                 </a>
 

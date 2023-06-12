@@ -1,13 +1,13 @@
 import React from "react";
 import Style from './Footer.module.scss';
-import { ReactComponent as Fcb } from '/public/fcb.svg'
-import { ReactComponent as Mlb } from '/public/MLB.svg'
-import { ReactComponent as Nba } from '/public/NBA.svg'
-import { ReactComponent as Nfl } from '/public/NFL.svg'
-import { ReactComponent as T1 } from '/public/T1.svg'
+import { ReactComponent as Fcb } from '/src/public/fcb.svg'
+import { ReactComponent as Mlb } from '/src/public/MLB.svg'
+import { ReactComponent as Nba } from '/src/public/NBA.svg'
+import { ReactComponent as Nfl } from '/src/public/NFL.svg'
+import { ReactComponent as T1 } from '/src/public/T1.svg'
 
-import { ReactComponent as Nike } from '/public/nike.svg'
-import { ReactComponent as Location } from "/public/location.svg";
+import { ReactComponent as Nike } from '/src/public/nike.svg'
+import { ReactComponent as Location } from "/src/public/location.svg";
 
 
 function Footer() {

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Parallax } from "react-scroll-parallax";
-import Style from './HomeCmp.module.scss'
+import Style from './HomeCmp.module.scss';
+import cata1 from '../../../public/main_cata_1.png';
+import cata2 from '../../../public/main_cata_3.png';
+import cata3 from '../../../public/main_cata_2.png';
 
 function GenderCateGory() {
     const [visible, setVisible] = useState(false);
@@ -21,7 +24,10 @@ function GenderCateGory() {
              `}>
                 <p className={Style.titles}>Men</p>
                 <div className={Style.shade} />
-                <img src="/public/main_cata_1.png" />
+                //! ///////////////////////////////////////////////////////////////
+                //* TODO src must be imported manually
+                //! ///////////////////////////////////////////////////////////////
+                <img src={cata1} />
             </div>
             <div className={`
             ${Style.cataImageContainer} 
@@ -29,7 +35,7 @@ function GenderCateGory() {
             `}>
                 <p className={Style.titles}>Women</p>
                 <div className={Style.shade} />
-                <img src="/public/main_cata_2.png" />
+                <img src={cata2} />
             </div>
             <div className={`
             ${Style.cataImageContainer}
@@ -37,7 +43,7 @@ function GenderCateGory() {
              `}>
                 <p className={Style.titles}>Kids</p>
                 <div className={Style.shade} />
-                <img src="/public/main_cata_3.png" />
+                <img src={cata3} />
             </div>
         </div>
     </Parallax>
