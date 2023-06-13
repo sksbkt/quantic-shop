@@ -28,7 +28,6 @@ function Header() {
     const profileMenuButton = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location.pathname);
     const user = useSelector(selectUser);
     const shoppingCard = useSelector(selectCard);
     const dispatch = useDispatch();
@@ -55,7 +54,6 @@ function Header() {
                         className={Style.hamburgerButton}
                         ref={hamburgerButton}
                         onClick={() => {
-                            console.log('CLICK');
                             setNavMenu(!navMenu);
                         }}>
                         <Hamburger className={Style.hamburgerIcon} />

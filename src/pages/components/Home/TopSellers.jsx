@@ -30,7 +30,6 @@ function TopSellers() {
             suspense: true
 
         });
-    console.log(topSellers.data);
     return <React.Fragment>
         <div className={Style.topSellersSection}>
             <h4>

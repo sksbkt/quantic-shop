@@ -38,16 +38,12 @@ function Login() {
 
 
     useEffect(() => {
-        //? Validations:WIP
-        //? username
-        if (username.length > 6)
-            console.log('username is too big');
+
         return () => {
         };
     }, [username, password]);
 
     // useEffect(() => {
-    //     console.log('FROM', from);
     //     if (from) {
     //         navigate(from);
     //     }

@@ -11,8 +11,7 @@ function ParallaxView(props, { height, parentSpeed, speed }) {
             onProgressChange={(progress) => {
                 (progress >= 0.2 && progress <= 0.6) ? setVisible(true) : setVisible(false)
             }}
-            // onEnter={() => console.log('ENTERED')}
-            // onExit={() => console.log('EXITED')}
+
             style={{ width: '100%' }}
         >
             <div

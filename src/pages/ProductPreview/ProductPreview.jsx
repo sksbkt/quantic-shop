@@ -78,11 +78,7 @@ function ProductPreview() {
                         </a>
                         <a
                             onClick={() => {
-                                dispatch(addToCard({
-                                    shoe_id: prod.shoe_id,
-                                    price: prod.price,
-                                    count: 1
-                                }))
+                                dispatch(addToCard(prod.shoe_id))
                             }}
                             className={Style.centerComboBtn}
                         >

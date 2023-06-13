@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 class LinkCustom extends React.Component {
 
@@ -14,11 +14,11 @@ class LinkCustom extends React.Component {
                     <p>
                         {this.props.children}
                     </p>
-                    : <a
-                        href={this.props.to}
+                    : <Link
+                        to={this.props.to}
                     >
                         {this.props.children}
-                    </a>
+                    </Link>
                 : <a
                     href={this.props.to}
                 >

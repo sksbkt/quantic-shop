@@ -49,13 +49,7 @@ function ProductItem({ product = {
                 {!skeletonLoad ? <div className={Style.itemRow}>
                     <p className={product.availability ? Style.available : Style.unavailable}>{product.price}</p>
                     <a
-                        onClick={() => dispatch(addToCard(
-                            {
-                                shoe_id: product.shoe_id,
-                                price: product.price,
-                                count: 1
-                            }
-                        ))}
+                        onClick={() => dispatch(addToCard(product.shoe_id))}
                         className={Style.iconBtnTransparent}
                     >
                         <Card className={Style.itemIcon} />

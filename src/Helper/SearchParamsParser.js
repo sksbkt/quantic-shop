@@ -42,7 +42,6 @@ export function isValidSearchParam(searchParams) {
 
         [...searchParams.entries()].map(
             entry => {
-                console.log('SP', entry);
                 const searchTags = ['_limit', '_start', '_order', 'availability'];
                 if (!searchTags.includes(entry[0])) {
                     return false;
@@ -54,7 +53,6 @@ export function isValidSearchParam(searchParams) {
                 // paramsValues.push(entry[1]);
             }
         );
-        console.log('all tags has been validated');
         return true;
     }
     return false;
@@ -65,7 +63,6 @@ export function validateSearchParams(searchParams) {
 
     //* FOR TESTING
     // [...searchParams.entries()].reduce((acc, [key, val]) => {
-    //     console.log(key);
     // });
     // const paramsKeys = [];
     // const paramsValues = [];
@@ -77,7 +74,6 @@ export function validateSearchParams(searchParams) {
             // paramsValues.push(entry[1]);
         }
     );
-    console.log(params);
     return {
         sortBy: params['_sort'] ?? 'name',
         ascending: (params['_order'] === 'asc') ?? true,

@@ -4,8 +4,11 @@ import NumberComboBox from "../inputComponents/NumberComboBox";
 
 import Style from './ShoppingCardItem.module.scss';
 import Rating from "../products/Rating";
+import { setCount } from "../../../Redux/Slices/CardSlice";
+import { useDispatch } from "react-redux";
 
 function ShoppingCardItem({ product, count }) {
+    const dispatch = useDispatch();
     return (
         <div className={Style.shoppingCardItemContainer} key={product.shoe_id}>
             <img
@@ -37,7 +40,7 @@ function ShoppingCardItem({ product, count }) {
                 <Rating rating={product.rating} />
                 <NumberComboBox
                     number={count}
-                    SetNumber={(s) => console.log(s)}
+                    SetNumber={(out) => dispatch(setCount({ id: product.shoe_id, count: out }))}
                 />
             </div>
         </div>

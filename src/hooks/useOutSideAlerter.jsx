@@ -10,7 +10,6 @@ function useOutsideAlerter(onClickOutSide, ref, excludeRef) {
         */
         function handleClickOutside(event) {
             if (ref.current && !ref.current.contains(event.target)) {
-                // console.log(event.target, excludeRef.current);
                 if (excludeRef == undefined)
                     onClickOutSide();
                 else if (!excludeRef.current.contains(event.target))

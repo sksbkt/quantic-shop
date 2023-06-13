@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import useInput from './hooks/useInput';
 import { useDispatch } from 'react-redux';
 import { login } from './Redux/Slices/UserSlice';
+import { setCard } from './Redux/Slices/CardSlice';
 import Features from './pages/Features/Features';
 
 // const Login = lazy(() => import('./features/Auth/Login'));
@@ -29,6 +30,7 @@ function App() {
   //? custom hook for testing
   //? could be simply replace with local storage functions direct call
   const [storeUser, setStoreUser, resetUser, userAttr] = useInput('userName', '');
+  const [storeCard, setStoreCard, resetCard, CardAttr] = useInput('card', '');
   useEffect(() => {
     if (storeUser != null && storeUser != '') {
       dispatch(login({
@@ -36,6 +38,7 @@ function App() {
         loggedIn: true
       }))
     }
+
     return () => {
     };
   }, [storeUser]);

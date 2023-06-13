@@ -32,10 +32,9 @@ function ProductsList() {
     let itemPerPage = searchParams.get('_limit') ?? 16;
     let start = (page - 1) * 16;
 
-    const search = userSearchParamsParser(filter) + `_start=${start}&_limit=${itemPerPage}`;
+    const search = userSearchParamsParser(filter) + `_start=${isNaN(start) ? 1 : start}&_limit=${itemPerPage}`;
 
     useEffect(() => {
-        console.log(isValidSearchParam(searchParams));
         if (!isValidSearchParam(searchParams)) {
             dispatch(setFilter(validateSearchParams(searchParams)));
             navigate(`/products/${paginationPage}?${search}`);
@@ -48,16 +47,7 @@ function ProductsList() {
         navigate(`/products/${paginationPage}?${search}`);
         mutate();
     }
-    // const search = useSelector(selectSearch);
-    // useEffect(() => {
-    //     console.log('RUN');
-    //     navigate(`/products/${paginationPage}?${search}`);
-    //     mutate();
-    // }, [paginationPage]);
 
-    // useEffect(() => {
-
-    // }, [filter, numberOfItems]);
 
     //? SWR
     const {
@@ -77,7 +67,6 @@ function ProductsList() {
         {
             onSuccess: res => {
                 setNumberOfItems(res.headers["x-total-count"]);
-                console.log(res.headers["x-total-count"]);
                 return res.data
             },
             revalidateOnFocus: false,
@@ -89,14 +78,12 @@ function ProductsList() {
     let content = 'loading...';
 
     if (isLoading) {
-        console.log('LOADING');
         content = <p>{content}</p>
     } else
         if (error) {
             content = <p>{error}</p>
         }
         else {
-            console.log(numberOfItems);
             content = (
                 <>
                     <div className={Style.productContainer}>

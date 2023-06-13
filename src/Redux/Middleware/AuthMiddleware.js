@@ -34,7 +34,6 @@ AuthListenMiddleware.startListening({
                 break
 
             default:
-                console.log('ACTION TYPE', action.type);
                 break;
         }
     }
