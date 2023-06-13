@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Parallax } from "react-scroll-parallax";
 import Style from './HomeCmp.module.scss';
-import cata1 from '../../../public/main_cata_1.png';
-import cata2 from '../../../public/main_cata_3.png';
-import cata3 from '../../../public/main_cata_2.png';
+import cata1 from '/main_cata_1.png';
+import cata2 from '/main_cata_3.png';
+import cata3 from '/main_cata_2.png';
 
 function GenderCateGory() {
     const [visible, setVisible] = useState(false);
@@ -24,9 +24,6 @@ function GenderCateGory() {
              `}>
                 <p className={Style.titles}>Men</p>
                 <div className={Style.shade} />
-                //! ///////////////////////////////////////////////////////////////
-                //* TODO src must be imported manually
-                //! ///////////////////////////////////////////////////////////////
                 <img src={cata1} />
             </div>
             <div className={`

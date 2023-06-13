@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import SvgBackground from "/src/public/SvgBackgroud";
 import { ReactComponent as Location } from "/src/public/location.svg";
 import { ReactComponent as Search } from "/src/public/Search.svg";
 import { ReactComponent as Card } from "/src/public/Card.svg";
@@ -20,6 +19,7 @@ import useInput from "../../hooks/useInput";
 import Notification from "../components/notification/notifications";
 import Notifications from "../components/notification/notifications";
 import LinkCustom from "../../class/LinkCustom";
+import SvgBackground from "../components/svgBackground/SvgBackgroud";
 
 function Header() {
     const [navMenu, setNavMenu] = useState(false);

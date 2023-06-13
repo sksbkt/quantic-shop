@@ -15,7 +15,7 @@ function Home() {
         <MainSlide />
         <ParallaxView height={150}>
             <div className={Style.justDoItContainer}>
-                <img src="/src/public/just_do_it.png" />
+                <img src="/just_do_it.png" />
             </div>
         </ParallaxView>
         <GenderCateGory />

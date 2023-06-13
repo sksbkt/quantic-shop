@@ -27,7 +27,7 @@ function ProductItem({ product = {
                 />
                 <div className={Style.imgContainer}>
                     <img
-                        src={`/src/public/shoe_${getRandomNumberInRange(1, 4)}.png`}
+                        src={`/shoe_${getRandomNumberInRange(1, 4)}.png`}
                     //  src={product.img}
                     />
                 </div>
