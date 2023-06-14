@@ -77,7 +77,10 @@ function Header() {
                         to={'/products'}
                         location={location.pathname}
                     >Products</LinkCustom>
-                    <a about="">Blog</a>
+                    <LinkCustom
+                        to={'/blog'}
+                        location={location.pathname}
+                    >Blog</LinkCustom>
                     <LinkCustom
                         to={'/features'}
                         location={location.pathname}

@@ -8,7 +8,6 @@ SettingsListenMiddleWare.startListening(
         )
         , effect: (action, listenApi) => {
             listenApi.cancelActiveListeners();
-            console.log(action.type);
         }
     }
 );

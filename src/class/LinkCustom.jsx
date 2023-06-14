@@ -2,39 +2,43 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, useLocation } from "react-router-dom";
 
-class LinkCustom extends React.Component {
 
-    render() {
-        const location = this.props.location;
-        const to = this.props.to;
-        return (
+function LinkCustom(props) {
+    const location = props.location;
+    const to = props.to;
+    function linkContent() {
+        if (location.includes(to)) {
+            if (location == '/' || to != '/') {
+                return <p>
+                    {props.children}
+                </p>;
+            }
+        }
+        return <Link
+            to={to}
+        >
+            {props.children}
+        </Link>
 
-            location.indexOf(to) >= 0 ?
-                location == to ?
-                    <p>
-                        {this.props.children}
-                    </p>
-                    : <Link
-                        to={this.props.to}
-                    >
-                        {this.props.children}
-                    </Link>
-                : <a
-                    href={this.props.to}
-                >
-                    {this.props.children}
-                </a>
-        );
     }
+    return linkContent
+        (
+            location?.indexOf(to) > -1 && to != "/" ?
+                // location == to ?
+                <p>
+                    {props.children}
+                </p>
+                : <Link
+                    to={to}
+                >
+                    {props.children}
+                </Link>
+            // : <Link
+            //     to={to}
+            // >
+            //     {props.children}
+            // </Link>
+        );
 }
-LinkCustom.propTypes = {
-    to: PropTypes.string,
-    location: PropTypes.string,
-};
+
 export default LinkCustom;
-
-
-
-
-
-

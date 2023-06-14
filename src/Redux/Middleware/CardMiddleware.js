@@ -10,7 +10,6 @@ CardListenMiddleware.startListening({
     effect: (action, listenApi,) => {
         listenApi.cancelActiveListeners();
 
-        console.log('MIDDELWARE CALLED', action.type);
         switch (action.type) {
             case addToCard.type:
                 let storedCard = [];
